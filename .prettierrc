@@ -4,8 +4,9 @@
   "singleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 100,
+  "printWidth": 80,
   "trailingComma": "es5",
   "astroAllowShorthand": true,
-  "astroSortOrder": "markup | scripts | styles"
+  "astroSortOrder": "markup | scripts | styles",
+  "singleAttributePerLine": true
 }

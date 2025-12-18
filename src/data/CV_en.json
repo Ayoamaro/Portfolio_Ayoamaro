@@ -1,0 +1,168 @@
+{
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Ayoze Amaro Estévez",
+    "role": "Front-End Developer",
+    "description": "Senior Web Developer specialized in JavaScript, Vue and TypeScript. I love creating clear, fast and well-crafted interfaces, adapted to the current market.",
+    "cta": {
+      "label": "Contact me",
+      "href": "#contact"
+    },
+    "image": "/img/ayo-profile1.webp",
+    "socials": [
+      {
+        "tag": "LINKEDIN",
+        "url": "https://www.linkedin.com/in/ayoamaro/",
+        "icon": "linkedin"
+      },
+      {
+        "tag": "INFOJOBS",
+        "url": "https://www.infojobs.net/candidate/cv/view/index.xhtml",
+        "icon": "infojobs"
+      },
+      {
+        "tag": "TECNOEMPLEO",
+        "url": "https://www.tecnoempleo.com/ayoze-amaro-estevez.mpt",
+        "icon": "tecnoempleo"
+      }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "description": "I am a consistent, committed and proactive person. I enjoy working in a team, contributing ideas and finding solutions that truly improve the product and user experience.",
+    "image": "/img/ayo-profile2.webp"
+  },
+  "skills": [
+    {
+      "name": "HTML5",
+      "level": 100,
+      "icon": "html"
+    },
+    {
+      "name": "CSS3",
+      "level": 90,
+      "icon": "css"
+    },
+    {
+      "name": "JavaScript",
+      "level": 85,
+      "icon": "javascript"
+    },
+    {
+      "name": "Vue.js",
+      "level": 80,
+      "icon": "vue"
+    }
+  ],
+  "tools": [
+    { "icon": "react" },
+    { "icon": "tailwind" },
+    { "icon": "node" },
+    { "icon": "java" },
+    { "icon": "php" },
+    { "icon": "mysql" }
+  ],
+  "experience": [
+    {
+      "company": "Codebay Innovation",
+      "position": "Front-End Developer",
+      "startDate": "October 2021",
+      "endDate": "November 2022",
+      "avatar": "/img/experience/codebay-avatar.webp",
+      "image": "/img/experience/codebay-preview.webp",
+      "summary": "Development and maintenance of components in Adobe Experience Manager (AEM) for international projects. Implementation of Front-End solutions with JavaScript and Vue.js. Coordination of work with Jira and Confluence, providing technical support and resolving blockages to ensure efficient deliveries."
+    },
+    {
+      "company": "Atos Consulting Canarias",
+      "position": "Full-Stack Developer",
+      "startDate": "May 2020",
+      "endDate": "June 2020",
+      "avatar": "/img/experience/atos-avatar.webp",
+      "image": "/img/experience/atos-preview.webp",
+      "summary": "Development of an Alexa skill with Node.js, integration of services in AWS and logic in Python. Organization of work in an agile environment using Trello, ensuring a quick functional launch and an improved user experience."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Landing Page Responsive (Astro)",
+      "description": "Modern and fast landing with Astro + Tailwind, optimized for SEO, accessibility and performance. Deployed on Vercel/Netlify for public access.",
+      "category": "frontend",
+      "link": "https://tu-landing-astro.vercel.app",
+      "repo": "https://github.com/ayoamaro/landing-astro",
+      "tags": ["Astro", "TypeScript", "Tailwind"],
+      "image": "/img/projects/landing-astro.webp"
+    },
+    {
+      "title": "Tasks App (Vue + TypeScript)",
+      "description": "Tasks CRUD application with reusable components, validations and organized state. Built with Vite and deployed on a public URL.",
+      "category": "frontend",
+      "link": "https://tu-todo-vue.netlify.app",
+      "repo": "https://github.com/ayoamaro/todo-vue-ts",
+      "tags": ["Vue", "TypeScript", "Vite", "Pinia"],
+      "image": "/img/projects/todo-vue.webp"
+    },
+    {
+      "title": "Users REST API (Auth + Roles)",
+      "description": "REST API with authentication (JWT), roles (admin/user), data validation and documentation with Swagger/OpenAPI. Deployed on Render/Railway.",
+      "category": "backend",
+      "link": "https://tu-api-users.onrender.com/docs",
+      "repo": "https://github.com/ayoamaro/api-users-jwt",
+      "tags": ["Node.js", "Express", "PostgreSQL", "Swagger"],
+      "image": "/img/projects/api-users.webp"
+    }
+  ],
+  "education": [
+    {
+      "institution": "IES Domingo Pérez Minik",
+      "degree": "CFGS Multi-Platform Application Development",
+      "startDate": "2020-09",
+      "endDate": "2023-06",
+      "grade": "7",
+      "summary": "Training focused on multi-platform application development, covering programming, databases and interface design. Development of multi-process and multi-thread applications, system management and implementation and maintenance of ERP-CRM solutions.",
+      "avatar": "/img/education/dam-avatar.webp"
+    },
+    {
+      "institution": "CIFP César Manrique",
+      "degree": "CFGS Web Application Development",
+      "startDate": "2017-09",
+      "endDate": "2020-06",
+      "grade": "7.04",
+      "summary": "Specialized training in web application development, from implementation to deployment and maintenance. Use of modern web technologies, secure data access and application of accessibility, usability and quality criteria according to professional standards.",
+      "avatar": "/img/education/daw-avatar.webp"
+    }
+  ],
+  "certifications": [
+    {
+      "issuer": "Google",
+      "title": "Prompt Design in Vertex AI Skill Badge",
+      "issueDate": "2025-02",
+      "summary": "Certification focused on designing effective prompts for generative models in Vertex AI. Application of prompt engineering techniques, image analysis and multimodal generation to obtain precise and reusable results in real environments.",
+      "image": "/certifications/google-ai.webp",
+      "credentialUrl": "https://www.credly.com/badges/25469d21-cfa8-4cb8-aa54-372f9e081869/linked_in_profile"
+    },
+    {
+      "issuer": "SEPE",
+      "title": "Open Source Back-End Web Developer",
+      "issueDate": "2025-11",
+      "summary": "Certification validating skills in Back-End development using open-source technologies. Includes design and development of RESTful APIs, database management, authentication and security, as well as deployment and maintenance of scalable web applications.",
+      "image": "/certifications/sepe-backend.webp",
+      "credentialUrl": "https://www.credly.com/"
+    },
+    {
+      "issuer": "OpenWebinars",
+      "title": "JavaScript Algorithms and Data Structures",
+      "issueDate": "2020-04",
+      "summary": "Certification that validates knowledge in algorithms and data structures using JavaScript. Includes problem solving, data manipulation and code optimization to improve the efficiency and performance of applications.",
+      "image": "/certifications/openwebinars-js.webp",
+      "credentialUrl": "https://openwebinars.net/cert/z56mz"
+    },
+    {
+      "issuer": "OpenWebinars",
+      "title": "Vue.js",
+      "issueDate": "2020-03",
+      "summary": "Certification that validates knowledge in the Vue.js framework for web application development. Includes component creation, state management, routing and API consumption to build interactive and dynamic applications.",
+      "image": "/certifications/openwebinars-vue.webp",
+      "credentialUrl": "https://openwebinars.net/cert/a7rgD"
+    }
+  ]
+}
