@@ -64,6 +64,10 @@
   ],
   "experience": [
     {
+      "title": "Experience",
+      "description": "My professional experience in web development, highlighting my responsibilities and achievements in each position."
+    },
+    {
       "company": "Codebay Innovation",
       "position": "Front-End Developer",
       "startDate": "October 2021",
@@ -83,6 +87,10 @@
     }
   ],
   "projects": [
+    {
+      "title": "My Projects",
+      "description": "Personal and collaborative projects, where I apply my web development skills to create innovative and functional solutions."
+    },
     {
       "title": "Landing Page Responsive (Astro)",
       "description": "Modern and fast landing with Astro + Tailwind, optimized for SEO, accessibility and performance. Deployed on Vercel/Netlify for public access.",
@@ -113,6 +121,10 @@
   ],
   "education": [
     {
+      "title": "Education",
+      "description": "My academic training related to web development and information technologies."
+    },
+    {
       "institution": "IES Domingo Pérez Minik",
       "degree": "CFGS Multi-Platform Application Development",
       "startDate": "2020-09",
@@ -132,6 +144,10 @@
     }
   ],
   "certifications": [
+    {
+      "title": "Certifications",
+      "description": "My professional certifications that validate my knowledge and skills in web development and related technologies."
+    },
     {
       "issuer": "Google",
       "title": "Prompt Design in Vertex AI Skill Badge",
@@ -164,5 +180,10 @@
       "image": "/certifications/openwebinars-vue.webp",
       "credentialUrl": "https://openwebinars.net/cert/a7rgD"
     }
-  ]
+  ],
+  "contact": {
+    "title": "Contact Me",
+    "description": "Do you have a project in mind or just want to say hello? Feel free to send me a message. I'm here to help!",
+    "email": "ayoze.amaro@gmail.com"
+  }
 }
