@@ -1,0 +1,116 @@
+---
+import CV from '../data/CV_es.json';
+
+import LinkedIn from './icons/LinkedIn.astro';
+import InfoJobs from './icons/InfoJobs.astro';
+import TecnoEmpleo from './icons/TecnoEmpleo.astro';
+
+const SOCIALS = {
+  LINKEDIN: {
+    tag: 'LINKEDIN',
+    url: 'https://www.linkedin.com/in/ayoamaro/',
+    class: 'bg-black text-white',
+    icon: LinkedIn,
+  },
+  INFOJOBS: {
+    tag: 'INFOJOBS',
+    url: 'https://www.infojobs.net/candidate/cv/view/index.xhtml',
+    class: 'bg-black text-white',
+    icon: InfoJobs,
+  },
+  TECNOEMPLEO: {
+    tag: 'TECNOEMPLEO',
+    url: 'https://www.tecnoempleo.com/ayoze-amaro-estevez.mpt',
+    class: 'bg-black text-white',
+    icon: TecnoEmpleo,
+  },
+} as const;
+
+const { hero } = CV;
+
+const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
+---
+
+<section
+  id="home"
+  class="relative"
+>
+  <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <div class="grid items-center gap-12 md:grid-cols-2">
+      <!-- LEFT -->
+      <div>
+        <p class="text-sm font-semibold tracking-wide text-zinc-700">
+          {hero.greeting}
+        </p>
+
+        <h5 class="mt-2 text-2xl font-extrabold text-orange-500 sm:text-3xl">
+          {hero.name}
+        </h5>
+
+        <h2 class="mt-3 text-5xl leading-[0.95] font-black sm:text-6xl">
+          {
+            hero.roleLines.map((line, index) => {
+              const isLast = index === hero.roleLines.length - 1;
+
+              return (
+                <span
+                  class={`block ${
+                    isLast
+                      ? 'ml-45 text-white'
+                      : 'text-zinc-500 dark:text-zinc-500'
+                  }`}
+                >
+                  {line}
+                </span>
+              );
+            })
+          }
+        </h2>
+
+        <p class="mt-6 max-w-xl text-gray-600 dark:text-gray-300">
+          {hero.description}
+        </p>
+
+        <div class="mt-8">
+          <a
+            href={hero.cta.href}
+            class="inline-flex items-center justify-center rounded-md bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none"
+          >
+            {hero.cta.label}
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="flex flex-col items-center">
+        <div class="relative">
+          <img
+            src={hero.image}
+            alt={`Foto de ${hero.name}`}
+            width="280"
+            height="280"
+            loading="eager"
+            class="h-64 w-64 rounded-full object-cover shadow-lg ring-1 ring-black/5 sm:h-72 sm:w-72"
+          />
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          {
+            socials.map((s) => (
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.tag}
+                title={s.tag}
+                class={`inline-flex h-10 w-10 items-center justify-center rounded-md shadow-sm transition hover:scale-[1.03] ${s.class}`}
+              >
+                <s.icon class="h-5 w-5" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
