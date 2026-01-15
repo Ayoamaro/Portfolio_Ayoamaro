@@ -55,12 +55,12 @@
     }
   ],
   "tools": [
-    { "icon": "react" },
-    { "icon": "tailwind" },
-    { "icon": "node" },
-    { "icon": "java" },
-    { "icon": "php" },
-    { "icon": "mysql" }
+    { "icon": "react", "level": 65 },
+    { "icon": "tailwind", "level": 70 },
+    { "icon": "node", "level": 80 },
+    { "icon": "java", "level": 50 },
+    { "icon": "php", "level": 60 },
+    { "icon": "mysql", "level": 60 }
   ],
   "experience": [
     {
@@ -125,8 +125,8 @@
     {
       "institution": "IES Domingo Pérez Minik",
       "degree": "CFGS Multi-Platform Application Development",
-      "startDate": "2020-09",
-      "endDate": "2023-06",
+      "startDate": "September 2020",
+      "endDate": "June 2023",
       "grade": "7",
       "summary": "Training focused on multi-platform application development, covering programming, databases and interface design. Development of multi-process and multi-thread applications, system management and implementation and maintenance of ERP-CRM solutions.",
       "avatar": "/img/education/dam-avatar.webp"
@@ -134,8 +134,8 @@
     {
       "institution": "CIFP César Manrique",
       "degree": "CFGS Web Application Development",
-      "startDate": "2017-09",
-      "endDate": "2020-06",
+      "startDate": "September 2017",
+      "endDate": "June 2020",
       "grade": "7.04",
       "summary": "Specialized training in web application development, from implementation to deployment and maintenance. Use of modern web technologies, secure data access and application of accessibility, usability and quality criteria according to professional standards.",
       "avatar": "/img/education/daw-avatar.webp"
@@ -149,7 +149,7 @@
     {
       "issuer": "Google",
       "title": "Prompt Design in Vertex AI Skill Badge",
-      "issueDate": "2025-02",
+      "issueDate": "February 2025",
       "summary": "Certification focused on designing effective prompts for generative models in Vertex AI. Application of prompt engineering techniques, image analysis and multimodal generation to obtain precise and reusable results in real environments.",
       "image": "/certifications/google-ai.webp",
       "credentialUrl": "https://www.credly.com/badges/25469d21-cfa8-4cb8-aa54-372f9e081869/linked_in_profile"
@@ -157,7 +157,7 @@
     {
       "issuer": "SEPE",
       "title": "Open Source Back-End Web Developer",
-      "issueDate": "2025-11",
+      "issueDate": "November 2025",
       "summary": "Certification validating skills in Back-End development using open-source technologies. Includes design and development of RESTful APIs, database management, authentication and security, as well as deployment and maintenance of scalable web applications.",
       "image": "/certifications/sepe-backend.webp",
       "credentialUrl": "https://www.credly.com/"
@@ -165,7 +165,7 @@
     {
       "issuer": "OpenWebinars",
       "title": "JavaScript Algorithms and Data Structures",
-      "issueDate": "2020-04",
+      "issueDate": "April 2020",
       "summary": "Certification that validates knowledge in algorithms and data structures using JavaScript. Includes problem solving, data manipulation and code optimization to improve the efficiency and performance of applications.",
       "image": "/certifications/openwebinars-js.webp",
       "credentialUrl": "https://openwebinars.net/cert/z56mz"
@@ -173,7 +173,7 @@
     {
       "issuer": "OpenWebinars",
       "title": "Vue.js",
-      "issueDate": "2020-03",
+      "issueDate": "March 2020",
       "summary": "Certification that validates knowledge in the Vue.js framework for web application development. Includes component creation, state management, routing and API consumption to build interactive and dynamic applications.",
       "image": "/certifications/openwebinars-vue.webp",
       "credentialUrl": "https://openwebinars.net/cert/a7rgD"
