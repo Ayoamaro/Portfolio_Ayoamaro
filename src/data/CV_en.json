@@ -73,7 +73,6 @@
       "startDate": "October 2021",
       "endDate": "November 2022",
       "avatar": "/img/experience/codebay-avatar.webp",
-      "image": "/img/experience/codebay-preview.webp",
       "summary": "Development and maintenance of components in Adobe Experience Manager (AEM) for international projects. Implementation of Front-End solutions with JavaScript and Vue.js. Coordination of work with Jira and Confluence, providing technical support and resolving blockages to ensure efficient deliveries."
     },
     {
@@ -82,7 +81,6 @@
       "startDate": "May 2020",
       "endDate": "June 2020",
       "avatar": "/img/experience/atos-avatar.webp",
-      "image": "/img/experience/atos-preview.webp",
       "summary": "Development of an Alexa skill with Node.js, integration of services in AWS and logic in Python. Organization of work in an agile environment using Trello, ensuring a quick functional launch and an improved user experience."
     }
   ],

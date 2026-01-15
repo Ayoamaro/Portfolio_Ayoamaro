@@ -55,12 +55,12 @@
     }
   ],
   "tools": [
-    { "icon": "react" },
-    { "icon": "tailwind" },
-    { "icon": "node" },
-    { "icon": "java" },
-    { "icon": "php" },
-    { "icon": "mysql" }
+    { "icon": "react", "level": 65 },
+    { "icon": "tailwind", "level": 70 },
+    { "icon": "node", "level": 80 },
+    { "icon": "java", "level": 50 },
+    { "icon": "php", "level": 60 },
+    { "icon": "mysql", "level": 60 }
   ],
   "experience": [
     {
@@ -73,7 +73,6 @@
       "startDate": "Octubre 2021",
       "endDate": "Noviembre 2022",
       "avatar": "/img/experience/codebay-avatar.webp",
-      "image": "/img/experience/codebay-preview.webp",
       "summary": "Desarrollo y mantenimiento de componentes en Adobe Experience Manager (AEM) para proyectos internacionales. Implementación de soluciones Front-End con JavaScript y Vue.js. Coordinación del trabajo con Jira y Confluence, aportando soporte técnico y resolución de bloqueos para asegurar entregas eficientes."
     },
     {
@@ -82,7 +81,6 @@
       "startDate": "Mayo 2020",
       "endDate": "Junio 2020",
       "avatar": "/img/experience/atos-avatar.webp",
-      "image": "/img/experience/atos-preview.webp",
       "summary": "Desarrollo de una skill para Amazon Alexa con Node.js, integración de servicios en AWS y lógica en Python. Organización del trabajo en entorno ágil mediante Trello, asegurando un lanzamiento funcional rápido y una mejora en la experiencia de usuario."
     }
   ],
@@ -153,7 +151,7 @@
       "title": "Prompt Design in Vertex AI Skill Badge",
       "issueDate": "2025-02",
       "summary": "Certificación enfocada en el diseño de prompts efectivos para modelos generativos en Vertex AI. Aplicación de técnicas de prompt engineering, análisis de imágenes y generación multimodal para obtener resultados precisos y reutilizables en entornos reales.",
-      "image": "/certifications/google-ai.webp",
+      "image": "/img/certifications/google.webp",
       "credentialUrl": "https://www.credly.com/badges/25469d21-cfa8-4cb8-aa54-372f9e081869/linked_in_profile"
     },
     {
@@ -161,7 +159,7 @@
       "title": "Open Source Back-End Web Developer",
       "issueDate": "2025-11",
       "summary": "Certificación que valida habilidades en desarrollo Back-End utilizando tecnologías de código abierto. Incluye diseño y desarrollo de APIs RESTful, gestión de bases de datos, autenticación y seguridad, así como despliegue y mantenimiento de aplicaciones web escalables.",
-      "image": "/certifications/sepe-backend.webp",
+      "image": "/img/certifications/sepe.webp",
       "credentialUrl": "https://www.credly.com/"
     },
     {
@@ -169,7 +167,7 @@
       "title": "JavaScript Profesional",
       "issueDate": "2020-04",
       "summary": "Certificación que valida conocimientos en algoritmos y estructuras de datos utilizando JavaScript. Incluye resolución de problemas, manipulación de datos y optimización de código para mejorar la eficiencia y el rendimiento de las aplicaciones.",
-      "image": "/certifications/openwebinars-js.webp",
+      "image": "/img/certifications/openwebinars.webp",
       "credentialUrl": "https://openwebinars.net/cert/z56mz"
     },
     {
@@ -177,7 +175,7 @@
       "title": "Vue.js",
       "issueDate": "2020-03",
       "summary": "Certificación que valida conocimientos en el framework Vue.js para el desarrollo de aplicaciones web. Incluye creación de componentes, gestión del estado, enrutamiento y consumo de APIs para construir aplicaciones interactivas y dinámicas.",
-      "image": "/certifications/openwebinars-vue.webp",
+      "image": "/img/certifications/openwebinars.webp",
       "credentialUrl": "https://openwebinars.net/cert/a7rgD"
     }
   ],
