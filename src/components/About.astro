@@ -1,5 +1,5 @@
 ---
-import data from '../data/CV_es.json';
+import CV from '../data/CV_es.json';
 import ReactIcon from './icons/React.astro';
 import TailwindIcon from './icons/Tailwind.astro';
 import NodeIcon from './icons/Node.astro';
@@ -10,8 +10,6 @@ import HtmlIcon from './icons/HTML.astro';
 import CssIcon from './icons/CSS.astro';
 import JavascriptIcon from './icons/Javascript.astro';
 import VueIcon from './icons/Vue.astro';
-
-const { about, skills, tools } = data;
 
 const ICONS = {
   react: ReactIcon,
@@ -26,51 +24,59 @@ const ICONS = {
   javascript: JavascriptIcon,
   vue: VueIcon,
 } as const;
+
+const { about, skills, tools } = CV;
 ---
 
 <section
   id="about"
   class="py-24"
 >
-  <div class="container mx-auto px-6">
-    <div class="grid items-center gap-16 md:grid-cols-2">
-      <div class="flex justify-center">
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="grid items-center gap-10 md:grid-cols-2">
+      <!-- Imagen -->
+      <div class="flex justify-center md:justify-start">
         <img
           src={about.image}
-          alt="Foto de perfil"
+          alt={about.title}
           class="h-72 w-72 rounded-full object-cover shadow-lg"
         />
       </div>
+
+      <!-- Contenido -->
       <div>
-        <h2 class="mb-4 text-4xl font-black sm:text-6xl">
+        <h2
+          class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-slate-50"
+        >
           {about.title}
         </h2>
-        <p class="mb-8 max-w-xl text-gray-600 dark:text-gray-300">
+        <p
+          class="mx-auto mt-4 max-w-2xl text-pretty text-slate-600 dark:text-slate-300"
+        >
           {about.description}
         </p>
-        <div class="space-y-6">
+
+        <!-- Skills -->
+        <div class="mt-5 space-y-6">
           {
             skills.map((skill) => {
               const SkillIcon = ICONS[skill.icon as keyof typeof ICONS];
-
               return (
                 <div>
-                  <div class="mb-1 flex items-center justify-between">
+                  <div class="mb-2 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                      {SkillIcon && (
-                        <span class="inline-flex h-5 w-5">
-                          <SkillIcon />
-                        </span>
-                      )}
-                      <span class="font-medium">{skill.name}</span>
+                      <span class="inline-flex h-5 w-5 text-white">
+                        <SkillIcon />
+                      </span>
+                      <span class="font-medium text-white">{skill.name}</span>
                     </div>
 
-                    <span class="text-sm text-gray-500">{skill.level}%</span>
+                    <span class="text-sm text-white/50">{skill.level}%</span>
                   </div>
 
-                  <div class="h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+                  <div class="h-2 w-full rounded-full bg-slate-700">
                     <div
-                      class="h-2 rounded-full bg-orange-500 transition-all"
+                      class="h-2 rounded-full bg-orange-500"
                       style={`width: ${skill.level}%`}
                     />
                   </div>
@@ -79,20 +85,49 @@ const ICONS = {
             })
           }
         </div>
+
+        <!-- Tools -->
         <div class="mt-10 flex flex-wrap gap-4">
           {
             tools.map((tool) => {
               const ToolIcon = ICONS[tool.icon as keyof typeof ICONS];
+              const value = tool.level; // 0..100
 
               return (
-                <div class="flex h-14 w-14 items-center justify-center rounded-full border-4 border-orange-500">
-                  {ToolIcon ? (
-                    <span class="inline-flex h-6 w-6">
+                <div class="relative h-14 w-14">
+                  {/* Ring */}
+                  <svg
+                    viewBox="0 0 36 36"
+                    class="h-14 w-14 -rotate-90"
+                  >
+                    {/* Fondo */}
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="15.915"
+                      fill="none"
+                      stroke="rgb(51 65 85)"
+                      stroke-width="3.5"
+                    />
+                    {/* Progreso */}
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="15.915"
+                      fill="none"
+                      stroke="rgb(249 115 22)"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-dasharray={`${value} 100`}
+                    />
+                  </svg>
+
+                  {/* Icono */}
+                  <div class="absolute inset-0 grid place-items-center">
+                    <span class="inline-flex h-6 w-6 text-white">
                       <ToolIcon />
                     </span>
-                  ) : (
-                    <span class="text-xs text-gray-500">{tool.icon}</span>
-                  )}
+                  </div>
                 </div>
               );
             })
