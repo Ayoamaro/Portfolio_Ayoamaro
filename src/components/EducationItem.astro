@@ -1,0 +1,99 @@
+---
+type Education = {
+  institution: string;
+  degree: string;
+  startDate: string;
+  endDate: string;
+  grade?: string;
+  summary: string;
+  avatar?: string;
+};
+
+const { item, index, isLast } = Astro.props as {
+  item: Education;
+  index: number;
+  isLast: boolean;
+};
+
+const dateLabel = `${item.startDate} - ${item.endDate}`;
+---
+
+<li class="relative">
+  <!-- Columna izquierda -->
+  <div class="flex gap-6 sm:gap-10">
+    <div class="relative flex w-14 shrink-0 justify-center">
+      <div
+        class:list={[
+          'absolute top-0 left-1/2 w-1 -translate-x-1/2 rounded-full',
+          'bg-slate-200 dark:bg-slate-700',
+          isLast ? 'h-12' : 'h-full',
+        ]}
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="relative mt-2">
+        <span class="sr-only">Punto de educación</span>
+        <div
+          id={dateLabel}
+          class="h-5 w-5 rounded-full bg-white ring-4 ring-orange-500 dark:bg-slate-900"
+        >
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="min-w-0 flex-1 pb-10 sm:pb-12">
+      <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+        {dateLabel}
+      </p>
+
+      <div class="mt-3 flex items-start gap-3">
+        {
+          item.avatar ? (
+            <img
+              src={item.avatar}
+              alt={`Avatar de ${item.institution}`}
+              loading="lazy"
+              class="h-10 w-10 rounded-md object-cover ring-1 ring-slate-200 dark:ring-slate-700"
+            />
+          ) : (
+            <div
+              class="grid h-10 w-10 place-items-center rounded-md bg-slate-100 ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700"
+              aria-hidden="true"
+            >
+              <span class="text-xs font-bold text-slate-500 dark:text-slate-400">
+                {item.institution?.slice(0, 2)?.toUpperCase()}
+              </span>
+            </div>
+          )
+        }
+
+        <div class="min-w-0">
+          <h3
+            class="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl dark:text-slate-50"
+          >
+            {item.degree}
+            <span class="text-slate-400 dark:text-slate-500">–</span>
+            <span class="font-semibold text-orange-500">{item.institution}</span
+            >
+          </h3>
+
+          {
+            item.grade && (
+              <p class="mt-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                Nota media: <span class="text-orange-500">{item.grade}</span>
+              </p>
+            )
+          }
+
+          <p
+            class="mt-2 leading-relaxed text-pretty text-slate-600 dark:text-slate-300"
+          >
+            {item.summary}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

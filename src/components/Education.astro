@@ -1,0 +1,37 @@
+---
+import EducationItem from './EducationItem.astro';
+import CV from '../data/CV_es.json';
+
+const educationRaw = (CV as any)?.education ?? [];
+const header = Array.isArray(educationRaw) ? educationRaw[0] : null;
+const itemsRaw = Array.isArray(educationRaw) ? educationRaw.slice(1) : [];
+
+const title = header?.title ?? 'Educación';
+const description = header?.description ?? '';
+
+const items = (itemsRaw as any[]).filter((it) => it?.degree && it?.institution);
+---
+
+<section
+  id="education"
+  class="py-24"
+>
+  <div class="container mx-auto w-full max-w-5xl px-4">
+    <header class="text-center">
+      <h2 class="text-5xl font-extrabold tracking-tight text-white">{title}</h2>
+      <p class="mx-auto mt-3 max-w-3xl text-zinc-300">{description}</p>
+    </header>
+
+    <ul class="mt-14">
+      {
+        items.map((item, index) => (
+          <EducationItem
+            item={item}
+            index={index}
+            isLast={index === items.length - 1}
+          />
+        ))
+      }
+    </ul>
+  </div>
+</section>
