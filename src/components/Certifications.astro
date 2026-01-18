@@ -1,0 +1,178 @@
+---
+import CertificationsItem from './CertificationsItem.astro';
+import CV from '../data/CV_es.json';
+
+type CertificationsHeader = {
+  title: string;
+  description: string;
+};
+
+type Certification = {
+  issuer: string;
+  title: string;
+  issueDate: string;
+  summary: string;
+  image: string;
+  credentialUrl: string;
+};
+
+const [header, ...items] = CV.certifications as [
+  CertificationsHeader,
+  ...Certification[],
+];
+---
+
+<section
+  id="certifications"
+  class="mx-auto w-full max-w-6xl px-4 py-20"
+>
+  <header class="text-center">
+    <h2
+      class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-slate-50"
+    >
+      {header.title}
+    </h2>
+    <p
+      class="mx-auto mt-4 max-w-2xl text-pretty text-slate-600 dark:text-slate-300"
+    >
+      {header.description}
+    </p>
+  </header>
+
+  <div class="relative mt-14">
+    <!-- Prev/Next (Desktop) -->
+    <button
+      type="button"
+      class="absolute top-1/2 -left-3 z-10 hidden -translate-y-1/2 rounded-full border border-neutral-200 bg-white/90 px-3 py-2 text-sm text-neutral-700 shadow-sm hover:bg-white md:block dark:border-neutral-800 dark:bg-neutral-900/90 dark:text-neutral-200"
+      data-cert-prev
+      aria-label="Certificación anterior"
+    >
+      ←
+    </button>
+
+    <button
+      type="button"
+      class="absolute top-1/2 -right-3 z-10 hidden -translate-y-1/2 rounded-full border border-neutral-200 bg-white/90 px-3 py-2 text-sm text-neutral-700 shadow-sm hover:bg-white md:block dark:border-neutral-800 dark:bg-neutral-900/90 dark:text-neutral-200"
+      data-cert-next
+      aria-label="Siguiente certificación"
+    >
+      →
+    </button>
+
+    <!-- Slider -->
+    <div
+      class="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6 [-ms-overflow-style:none] [scrollbar-width:none]"
+      tabindex="0"
+      aria-roledescription="carousel"
+      aria-label="Certificaciones"
+      data-cert-slider
+    >
+      <style>
+        #certifications [data-cert-slider]::-webkit-scrollbar {
+          display: none;
+        }
+      </style>
+
+      {
+        items.map((item, index) => (
+          <div
+            class="w-full shrink-0 snap-center md:w-[920px]"
+            data-cert-slide
+            data-index={index}
+            role="group"
+            aria-label={`${index + 1} de ${items.length}`}
+          >
+            <CertificationsItem item={item} />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Dots -->
+    <div
+      class="mt-4 flex justify-center gap-2"
+      role="tablist"
+      aria-label="Paginación de certificaciones"
+    >
+      {
+        items.map((_, index) => (
+          <button
+            type="button"
+            class="h-2.5 w-10 rounded-full bg-neutral-300/70 transition dark:bg-neutral-700"
+            data-cert-dot
+            data-index={index}
+            aria-label={`Ir a la certificación ${index + 1}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const root = document.querySelector('#certifications');
+      if (!root) return;
+
+      const slider = root.querySelector('[data-cert-slider]');
+      const slides = Array.from(root.querySelectorAll('[data-cert-slide]'));
+      const dots = Array.from(root.querySelectorAll('[data-cert-dot]'));
+      const btnPrev = root.querySelector('[data-cert-prev]');
+      const btnNext = root.querySelector('[data-cert-next]');
+
+      if (!slider || slides.length === 0) return;
+
+      let activeIndex = 0;
+
+      const setActive = (index) => {
+        activeIndex = Math.max(0, Math.min(slides.length - 1, index));
+
+        dots.forEach((d, i) => {
+          d.classList.toggle('bg-orange-500', i === activeIndex);
+          d.classList.toggle('bg-neutral-300/70', i !== activeIndex);
+          d.classList.toggle('dark:bg-neutral-700', i !== activeIndex);
+        });
+      };
+
+      const goTo = (index) => {
+        setActive(index);
+        slides[activeIndex].scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'nearest',
+        });
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () =>
+          goTo(Number(dot.dataset.index || '0'))
+        );
+      });
+
+      btnPrev?.addEventListener('click', () => goTo(activeIndex - 1));
+      btnNext?.addEventListener('click', () => goTo(activeIndex + 1));
+
+      slider.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(activeIndex - 1);
+        if (e.key === 'ArrowRight') goTo(activeIndex + 1);
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          const best = entries
+            .filter((en) => en.isIntersecting)
+            .sort(
+              (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0)
+            )[0];
+
+          if (!best) return;
+          const idx = Number(best.target.getAttribute('data-index') || '0');
+          setActive(idx);
+        },
+        { root: slider, threshold: [0.55, 0.65, 0.75] }
+      );
+
+      slides.forEach((s) => io.observe(s));
+      setActive(0);
+    })();
+  </script>
+</section>
