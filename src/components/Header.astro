@@ -2,17 +2,202 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<header class="flex w-full items-center justify-between py-3">
-  <nav class="mt-4 flex flex-1 justify-center gap-10 text-sm font-medium">
-    <a href="/">Home</a>
-    <a href="/about">About me</a>
-    <a href="/experience">Experience</a>
-    <a href="/projects">Projects</a>
-    <a href="/education">Education</a>
-    <a href="/contact">Contact</a>
-    <div class="flex items-center gap-3">
-      <Icon name="ph:sun" />
-      <Icon name="twemoji:flag-spain" />
+<header class="fixed top-0 left-0 z-50 w-full py-3 backdrop-blur">
+  <div class="mx-auto w-full max-w-6xl px-4">
+    <div class="flex items-center justify-end">
+      <!-- DESKTOP -->
+      <div
+        class="hidden w-full items-center justify-center gap-10 text-sm font-medium md:flex"
+      >
+        <nav class="flex items-center gap-10">
+          <a
+            class="text-white/80 hover:text-white"
+            href="#home"
+            >Home</a
+          >
+          <a
+            class="text-white/80 hover:text-white"
+            href="#about"
+            >About me</a
+          >
+          <a
+            class="text-white/80 hover:text-white"
+            href="#experience"
+            >Experience</a
+          >
+          <a
+            class="text-white/80 hover:text-white"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="text-white/80 hover:text-white"
+            href="#education"
+            >Education</a
+          >
+          <a
+            class="text-white/80 hover:text-white"
+            href="#contact"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+            aria-label="Toggle theme"
+          >
+            <Icon
+              name="ph:sun"
+              class="size-5"
+            />
+          </button>
+
+          <button
+            type="button"
+            class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+            aria-label="Change language"
+          >
+            <Icon
+              name="twemoji:flag-spain"
+              class="size-5"
+            />
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button
+          type="button"
+          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          aria-label="Toggle theme"
+        >
+          <Icon
+            name="ph:sun"
+            class="size-5"
+          />
+        </button>
+
+        <button
+          type="button"
+          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          aria-label="Change language"
+        >
+          <Icon
+            name="twemoji:flag-spain"
+            class="size-5"
+          />
+        </button>
+
+        <button
+          id="menuBtn"
+          type="button"
+          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <Icon
+            name="ph:list"
+            class="size-6"
+          />
+        </button>
+      </div>
     </div>
-  </nav>
+  </div>
+
+  <!-- Mobile Menu (Overlay) -->
+  <div
+    id="mobileMenu"
+    class="fixed inset-0 z-50 hidden md:hidden"
+    aria-hidden="true"
+  >
+    <div
+      id="menuBackdrop"
+      class="absolute inset-0 bg-black/60"
+    >
+    </div>
+
+    <div
+      class="absolute top-20 right-4 w-[min(22rem,calc(100%-2rem))] rounded-2xl border border-white/10 bg-neutral-950/95 p-4 shadow-xl backdrop-blur"
+    >
+      <div class="flex items-center justify-end">
+        <button
+          id="closeBtn"
+          type="button"
+          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          aria-label="Close menu"
+        >
+          <Icon
+            name="ph:x"
+            class="size-6"
+          />
+        </button>
+      </div>
+
+      <div class="mt-2 grid gap-2 text-sm font-medium">
+        <a
+          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          href="#home"
+          >Home</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          href="#about"
+          >About me</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          href="#experience"
+          >Experience</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          href="#projects"
+          >Projects</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          href="#education"
+          >Education</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          href="#contact"
+          >Contact</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const backdrop = document.getElementById('menuBackdrop');
+
+    const openMenu = () => {
+      menu?.classList.remove('hidden');
+      btn?.setAttribute('aria-expanded', 'true');
+      menu?.setAttribute('aria-hidden', 'false');
+      document.documentElement.classList.add('overflow-hidden');
+    };
+
+    const closeMenu = () => {
+      menu?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.remove('overflow-hidden');
+    };
+
+    btn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    menu
+      ?.querySelectorAll('a')
+      .forEach((a) => a.addEventListener('click', closeMenu));
+  </script>
 </header>
