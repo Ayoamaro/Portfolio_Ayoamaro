@@ -8,7 +8,7 @@
       "label": "Contáctame",
       "href": "#contact"
     },
-    "image": "./img/ayo-profile1.webp",
+    "image": "./img/ayo-profile1.png",
     "socials": [
       {
         "tag": "LINKEDIN",
@@ -30,7 +30,7 @@
   "about": {
     "title": "Sobre mí",
     "description": "Soy una persona perseverante, comprometida y proactiva. Disfruto trabajar en equipo, aportar ideas y encontrar soluciones que realmente mejoren el producto y la experiencia del usuario.",
-    "image": "/img/ayo-profile2.webp"
+    "image": "/img/ayo-profile2.png"
   },
   "skills": [
     {

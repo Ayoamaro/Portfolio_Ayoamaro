@@ -8,7 +8,7 @@
       "label": "Contact me",
       "href": "#contact"
     },
-    "image": "/img/ayo-profile1.webp",
+    "image": "/img/ayo-profile1.png",
     "socials": [
       {
         "tag": "LINKEDIN",
@@ -30,7 +30,7 @@
   "about": {
     "title": "About me",
     "description": "I am a consistent, committed and proactive person. I enjoy working in a team, contributing ideas and finding solutions that truly improve the product and user experience.",
-    "image": "/img/ayo-profile2.webp"
+    "image": "/img/ayo-profile2.png"
   },
   "skills": [
     {
