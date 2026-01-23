@@ -33,7 +33,7 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
 
 <section
   id="home"
-  class="relative"
+  class="pt-6 md:pt-10"
 >
   <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="grid items-center gap-12 md:grid-cols-2">
@@ -56,7 +56,7 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
                 <span
                   class={`block ${
                     isLast
-                      ? 'ml-45 text-white'
+                      ? 'ml-0 text-white sm:ml-45'
                       : 'text-zinc-500 dark:text-zinc-500'
                   }`}
                 >
@@ -87,10 +87,8 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
           <img
             src={hero.image}
             alt={`Foto de ${hero.name}`}
-            width="280"
-            height="280"
             loading="eager"
-            class="h-64 w-64 rounded-full object-cover shadow-lg ring-1 ring-black/5 sm:h-72 sm:w-72"
+            class="object-cover shadow-lg ring-1 ring-black/5 sm:h-72 sm:w-72 md:h-120 md:w-100"
           />
         </div>
 
