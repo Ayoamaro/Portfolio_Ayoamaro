@@ -1,6 +1,4 @@
 ---
-import CV from '../data/CV_es.json';
-
 import LinkedIn from './icons/LinkedIn.astro';
 import InfoJobs from './icons/InfoJobs.astro';
 import TecnoEmpleo from './icons/TecnoEmpleo.astro';
@@ -9,26 +7,38 @@ const SOCIALS = {
   LINKEDIN: {
     tag: 'LINKEDIN',
     url: 'https://www.linkedin.com/in/ayoamaro/',
-    class: 'bg-black text-white',
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: LinkedIn,
   },
   INFOJOBS: {
     tag: 'INFOJOBS',
     url: 'https://www.infojobs.net/candidate/cv/view/index.xhtml',
-    class: 'bg-black text-white',
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: InfoJobs,
   },
   TECNOEMPLEO: {
     tag: 'TECNOEMPLEO',
     url: 'https://www.tecnoempleo.com/ayoze-amaro-estevez.mpt',
-    class: 'bg-black text-white',
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: TecnoEmpleo,
   },
 } as const;
 
-const { hero } = CV;
+type HeroData = {
+  greeting: string;
+  name: string;
+  roleLines: string[];
+  description: string;
+  cta: { label: string; href: string };
+  image: string;
+};
 
+const { data } = Astro.props as { data: HeroData };
 const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
+
+if (!data) throw new Error('[Hero] Missing prop: data');
+if (!Array.isArray(data.roleLines))
+  throw new Error('[Hero] data.roleLines must be an array');
 ---
 
 <section
@@ -39,25 +49,23 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
     <div class="grid items-center gap-12 md:grid-cols-2">
       <!-- LEFT -->
       <div>
-        <p class="text-sm font-semibold tracking-wide text-zinc-700">
-          {hero.greeting}
+        <p class="text-sm font-semibold tracking-wide text-(--muted)">
+          {data.greeting}
         </p>
 
-        <h5 class="mt-2 text-2xl font-extrabold text-orange-500 sm:text-3xl">
-          {hero.name}
+        <h5 class="mt-2 text-2xl font-extrabold text-(--accent) sm:text-3xl">
+          {data.name}
         </h5>
 
         <h2 class="mt-3 text-5xl leading-[0.95] font-black sm:text-6xl">
           {
-            hero.roleLines.map((line, index) => {
-              const isLast = index === hero.roleLines.length - 1;
+            data.roleLines.map((line, index) => {
+              const isLast = index === data.roleLines.length - 1;
 
               return (
                 <span
                   class={`block ${
-                    isLast
-                      ? 'ml-0 text-white sm:ml-45'
-                      : 'text-zinc-500 dark:text-zinc-500'
+                    isLast ? 'ml-0 text-(--text) sm:ml-45' : 'text-(--muted)'
                   }`}
                 >
                   {line}
@@ -67,17 +75,18 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
           }
         </h2>
 
-        <p class="mt-6 max-w-xl text-gray-600 dark:text-gray-300">
-          {hero.description}
+        <p class="mt-6 max-w-xl text-(--muted)">
+          {data.description}
         </p>
 
         <div class="mt-8">
-          <a
-            href={hero.cta.href}
-            class="inline-flex items-center justify-center rounded-md bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none"
+          <button
+            type="button"
+            onclick={`location.href='${data.cta.href}'`}
+            class="inline-flex items-center justify-center rounded-md bg-(--accent) px-6 py-3 text-sm font-semibold text-(--accent-contrast) transition-all duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-none"
           >
-            {hero.cta.label}
-          </a>
+            {data.cta.label}
+          </button>
         </div>
       </div>
 
@@ -85,10 +94,10 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
       <div class="flex flex-col items-center">
         <div class="relative">
           <img
-            src={hero.image}
-            alt={`Foto de ${hero.name}`}
+            src={data.image}
+            alt={`Foto de ${data.name}`}
             loading="eager"
-            class="object-cover shadow-lg ring-1 ring-black/5 sm:h-72 sm:w-72 md:h-120 md:w-100"
+            class="pointer-events-none drop-shadow-lg select-none sm:h-72 md:h-120"
           />
         </div>
 
@@ -101,9 +110,9 @@ const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
                 rel="noreferrer"
                 aria-label={s.tag}
                 title={s.tag}
-                class={`inline-flex h-10 w-10 items-center justify-center rounded-md shadow-sm transition hover:scale-[1.03] ${s.class}`}
+                class={`group inline-flex h-10 w-10 items-center justify-center rounded-md bg-(--surface) shadow-sm transition hover:scale-[1.03] focus-visible:outline-none`}
               >
-                <s.icon class="h-5 w-5" />
+                <s.icon class="h-5 w-5 transition-colors duration-300 group-hover:text-(--accent)" />
               </a>
             ))
           }

@@ -1,25 +1,42 @@
 ---
 import ExperienceItem from './ExperienceItem.astro';
-import CV from '../data/CV_es.json';
 
-const header = CV.experience[0];
-const experiences = CV.experience.slice(1);
+type ExperienceHeader = {
+  title: string;
+  description: string;
+};
+
+type Experience = {
+  company: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  avatar: string;
+  summary: string;
+  image?: string;
+};
+
+type ExperienceData = Array<ExperienceHeader | Experience>;
+
+const { data } = Astro.props as { data: ExperienceData };
+if (!data) throw new Error('[Experience] Missing prop: data');
+
+const header = data[0] as ExperienceHeader;
+const experiences = data.slice(1) as Experience[];
 ---
 
 <section
   id="experience"
-  class="py-20"
+  class="scroll-mt-28 py-20"
 >
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
     <header class="text-center">
       <h2
-        class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-slate-50"
+        class="text-4xl font-extrabold tracking-tight text-(--text) sm:text-5xl"
       >
         {header.title}
       </h2>
-      <p
-        class="mx-auto mt-4 max-w-2xl text-pretty text-slate-600 dark:text-slate-300"
-      >
+      <p class="mx-auto mt-4 max-w-2xl text-pretty text-(--muted)">
         {header.description}
       </p>
     </header>

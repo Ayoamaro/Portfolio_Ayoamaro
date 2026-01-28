@@ -1,5 +1,4 @@
 ---
-import CV from '../data/CV_es.json';
 import AstroIcon from './icons/AstroIcon.astro';
 import TypeScriptIcon from './icons/TypeScript.astro';
 import TailwindIcon from './icons/Tailwind.astro';
@@ -12,7 +11,6 @@ import PostgresIcon from './icons/PostgreSQL.astro';
 import SwaggerIcon from './icons/Swagger.astro';
 import GitHubIcon from './icons/GitHub.astro';
 import LinkIcon from './icons/Link.astro';
-import Link from './icons/Link.astro';
 
 type Project = {
   title: string;
@@ -29,9 +27,13 @@ type ProjectsHeader = {
   description: string;
 };
 
-const projectsRaw = CV.projects;
-const sectionHeader = projectsRaw[0] as ProjectsHeader;
-const projects = projectsRaw.slice(1) as Project[];
+type ProjectsData = Array<ProjectsHeader | Project>;
+
+const { data } = Astro.props as { data: ProjectsData };
+const sectionHeader = data[0] as ProjectsHeader;
+const projects = data.slice(1) as Project[];
+
+// Categorías dinámicas
 const categories: string[] = [];
 projects.forEach((p) => {
   if (!categories.includes(p.category)) categories.push(p.category);
@@ -39,94 +41,94 @@ projects.forEach((p) => {
 
 const filterButtons: { key: string; label: string }[] = [
   { key: 'all', label: 'All' },
-];
-categories.forEach((c) => {
-  filterButtons.push({
+  ...categories.map((c) => ({
     key: c,
     label: c.charAt(0).toUpperCase() + c.slice(1),
-  });
-});
+  })),
+];
 
 const ACTIONS = {
   preview: {
     label: 'Preview',
     icon: LinkIcon,
     class:
-      'bg-[#131a23] border-white/10 text-white hover:bg-[#1a2432] hover:border-white/20',
+      'bg-[var(--surface)] border-[var(--border)] text-[var(--text)] hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
   },
   github: {
     label: 'Code',
     icon: GitHubIcon,
     class:
-      'bg-[#131a23] border-white/10 text-white hover:bg-[#1a2432] hover:border-white/20',
+      'bg-[var(--surface)] border-[var(--border)] text-[var(--text)] hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
   },
 };
 
-// Tags con color + icon
+// Tags con color + icon (se mantienen “brand”, pero ya no dependen del theme)
 const TAGS: Record<string, { label: string; icon: any; class: string }> = {
   Astro: {
     label: 'Astro',
     icon: AstroIcon,
-    class: 'bg-[#1b0a14] border-[#ff5d01]/30 text-[#ff5d01]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   TypeScript: {
     label: 'TypeScript',
     icon: TypeScriptIcon,
-    class: 'bg-[#0b1e3a] border-[#3178c6]/30 text-[#3178c6]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   Tailwind: {
     label: 'Tailwind',
     icon: TailwindIcon,
-    class: 'bg-[#06212a] border-[#38bdf8]/30 text-[#38bdf8]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   Vue: {
     label: 'Vue',
     icon: VueIcon,
-    class: 'bg-[#071a12] border-[#42b883]/30 text-[#42b883]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   Vite: {
     label: 'Vite',
     icon: ViteIcon,
-    class: 'bg-[#15112a] border-[#a855f7]/30 text-[#a855f7]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   Pinia: {
     label: 'Pinia',
     icon: PiniaIcon,
-    class: 'bg-[#1a1406] border-[#f7d336]/30 text-[#f7d336]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   'Node.js': {
     label: 'Node.js',
     icon: NodeIcon,
-    class: 'bg-[#0b160b] border-[#3c873a]/30 text-[#3c873a]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   Express: {
     label: 'Express',
     icon: ExpressIcon,
-    class: 'bg-neutral-950 border-neutral-700 text-neutral-200',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   PostgreSQL: {
     label: 'PostgreSQL',
     icon: PostgresIcon,
-    class: 'bg-[#071a2b] border-[#336791]/30 text-[#336791]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
   Swagger: {
     label: 'Swagger',
     icon: SwaggerIcon,
-    class: 'bg-[#0f1406] border-[#85ea2d]/30 text-[#85ea2d]',
+    class: 'bg-[--bg] border-[--border] text-[--text]',
   },
 };
 ---
 
 <section
   id="projects"
-  class="py-20"
+  class="scroll-mt-28 py-20"
 >
   <div class="mx-auto w-full max-w-6xl px-4">
     <header class="text-center">
-      <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+      <h2
+        class="text-4xl font-extrabold tracking-tight text-(--text) sm:text-5xl"
+      >
         {sectionHeader.title}
       </h2>
-      <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-neutral-300">
+      <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-(--muted)">
         {sectionHeader.description}
       </p>
     </header>
@@ -136,7 +138,7 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
         filterButtons.map((btn) => (
           <button
             type="button"
-            class="project-filter rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm font-medium text-neutral-100 transition hover:border-neutral-500"
+            class="project-filter rounded-xl border px-4 py-2 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 focus-visible:outline-none"
             data-filter={btn.key}
           >
             {btn.label}
@@ -152,8 +154,14 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
             class="project-card group"
             data-category={p.category}
           >
-            <div class="overflow-hidden rounded-2xl bg-neutral-950 shadow-sm ring-1 ring-neutral-800 transition group-hover:shadow-md">
-              <div class="relative aspect-4/3 bg-neutral-950">
+            <div
+              class="overflow-hidden rounded-2xl shadow-sm transition group-hover:shadow-md"
+              style="background: var(--surface); border: 1px solid var(--border);"
+            >
+              <div
+                class="relative aspect-4/3"
+                style="background: var(--bg);"
+              >
                 <img
                   src={p.image}
                   alt={p.title}
@@ -163,22 +171,22 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
               </div>
 
               <div class="p-6">
-                <p class="text-xs font-semibold tracking-wide text-orange-500 uppercase">
+                <p class="text-xs font-semibold tracking-wide text-(--accent) uppercase">
                   {p.category}
                 </p>
 
-                <h3 class="mt-2 text-lg leading-snug font-bold text-white">
+                <h3 class="mt-2 text-lg leading-snug font-bold text-(--text)">
                   {p.title}
                 </h3>
 
                 <div class="mt-3">
-                  <p class="project-desc line-clamp-3 text-sm leading-6 text-neutral-300">
+                  <p class="project-desc line-clamp-3 text-sm leading-6 text-(--muted)">
                     {p.description}
                   </p>
 
                   <button
                     type="button"
-                    class="project-toggle mt-2 text-sm font-semibold text-orange-500 hover:underline"
+                    class="project-toggle mt-2 text-sm font-semibold text-(--accent) transition-colors hover:text-(--accent-hover) focus-visible:outline-none"
                   >
                     Ver más...
                   </button>
@@ -186,17 +194,23 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
 
                 <div class="mt-4 flex flex-wrap gap-2">
                   {p.tags.map((t) => {
-                    const data = TAGS[t];
-                    const Icon = data.icon;
+                    const tag = TAGS[t];
+                    const Icon = tag.icon;
+
                     return (
                       <span
                         class:list={[
                           'inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium',
-                          data.class,
+                          'text-(--text)',
+                          tag.class,
                         ]}
+                        style="background: color-mix(in srgb, var(--bg) 92%, transparent); border-color: var(--border);"
                       >
-                        <Icon class="h-4 w-4" />
-                        <span>{data.label}</span>
+                        <Icon
+                          class="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                        <span>{tag.label}</span>
                       </span>
                     );
                   })}
@@ -208,8 +222,8 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                     target="_blank"
                     rel="noreferrer"
                     class:list={[
-                      'inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition',
-                      'shadow-sm',
+                      'inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300 ease-out',
+                      'shadow-sm hover:-translate-y-0.5 focus-visible:outline-none',
                       ACTIONS.preview.class,
                     ]}
                   >
@@ -223,8 +237,8 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                     target="_blank"
                     rel="noreferrer"
                     class:list={[
-                      'inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition',
-                      'shadow-sm',
+                      'inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300 ease-out',
+                      'shadow-sm hover:-translate-y-0.5 focus-visible:outline-none',
                       ACTIONS.github.class,
                     ]}
                   >
@@ -242,6 +256,7 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
   </div>
 
   <script is:inline>
+    // Filtros
     const buttons = Array.from(document.querySelectorAll('.project-filter'));
     const cards = Array.from(document.querySelectorAll('.project-card'));
 
@@ -271,7 +286,7 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
       });
     });
 
-    // Ver más
+    // Ver más / Ver menos
     const toggles = Array.from(document.querySelectorAll('.project-toggle'));
 
     toggles.forEach((btn) => {

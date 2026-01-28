@@ -1,0 +1,112 @@
+---
+type ContactData = {
+  title: string;
+  description: string;
+  email: string;
+  form: {
+    emailLabel: string;
+    emailPlaceholder: string;
+    submit: string;
+  };
+  mailto: {
+    subject: string;
+    bodyIntro: string;
+    bodyEmailLine: string;
+    bodyMessageLine: string;
+  };
+};
+
+const { data } = Astro.props as { data: ContactData };
+const { title, description, email } = data;
+---
+
+<section
+  id="contact"
+  class="scroll-mt-28 py-24"
+>
+  <div class="mx-auto max-w-5xl px-6">
+    <header class="mx-auto max-w-3xl text-center">
+      <h2
+        class="text-4xl font-extrabold tracking-tight text-(--text) sm:text-5xl"
+      >
+        {title}
+      </h2>
+
+      <p class="mx-auto mt-4 max-w-2xl text-pretty text-(--muted)">
+        {description}
+      </p>
+    </header>
+
+    <form
+      id="contactForm"
+      class="mx-auto mt-14 max-w-3xl"
+    >
+      <div
+        class="flex flex-col items-stretch gap-6 sm:flex-row sm:items-center sm:gap-8"
+      >
+        <label
+          class="sr-only"
+          for="contactEmail"
+          >{data.form.emailLabel}</label
+        >
+
+        <input
+          id="contactEmail"
+          name="contactEmail"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder={data.form.emailPlaceholder}
+          required
+          class="h-14 w-full rounded-2xl border px-6 text-base shadow-sm transition focus-visible:outline-none"
+          style="
+            background: var(--bg);
+            border-color: var(--border);
+            color: var(--text);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+          "
+        />
+
+        <button
+          type="submit"
+          class="h-14 shrink-0 rounded-2xl bg-(--accent) px-10 text-base font-semibold text-(--accent-contrast) shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-none"
+        >
+          {data.form.submit}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script is:inline define:vars={{ to: email, mailto: data.mailto }}>
+    const form = document.getElementById('contactForm');
+    const input = document.getElementById('contactEmail');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const from = (input?.value || '').trim();
+      if (!from) return;
+
+      const subject = encodeURIComponent(mailto.subject);
+      const body = encodeURIComponent(
+        `${mailto.bodyIntro}\n\n${mailto.bodyEmailLine} ${from}\n\n${mailto.bodyMessageLine}\n`
+      );
+
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+  </script>
+
+  <style>
+    #contactEmail::placeholder {
+      color: var(--muted);
+      opacity: 1;
+    }
+
+    #contactEmail:focus-visible {
+      box-shadow: 0 0 0 4px var(--focus);
+    }
+    #contactForm button[type='submit']:hover {
+      background: var(--accent-hover);
+    }
+  </style>
+</section>

@@ -1,0 +1,121 @@
+---
+import CV from '../data/CV_es.json';
+
+import Gmail from './icons/Gmail.astro';
+import InfoJobs from './icons/InfoJobs.astro';
+import LinkedIn from './icons/LinkedIn.astro';
+import TecnoEmpleo from './icons/TecnoEmpleo.astro';
+
+const SOCIALS = {
+  GMAIL: {
+    tag: 'GMAIL',
+    url: `mailto:${CV.contact.email}`,
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
+    icon: Gmail,
+  },
+  INFOJOBS: {
+    tag: 'INFOJOBS',
+    url: 'https://www.infojobs.net/candidate/cv/view/index.xhtml',
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
+    icon: InfoJobs,
+  },
+  LINKEDIN: {
+    tag: 'LINKEDIN',
+    url: 'https://www.linkedin.com/in/ayoamaro/',
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
+    icon: LinkedIn,
+  },
+  TECNOEMPLEO: {
+    tag: 'TECNOEMPLEO',
+    url: 'https://www.tecnoempleo.com/ayoze-amaro-estevez.mpt',
+    class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
+    icon: TecnoEmpleo,
+  },
+} as const;
+
+const socials = [
+  SOCIALS.GMAIL,
+  SOCIALS.INFOJOBS,
+  SOCIALS.LINKEDIN,
+  SOCIALS.TECNOEMPLEO,
+];
+
+const year = new Date().getFullYear();
+const { lang, cv } = Astro.props as { lang: 'es' | 'en'; cv: any };
+---
+
+<footer
+  style="background: var(--bg); border-top: 1px solid var(--border); margin-top: 4rem;"
+>
+  <!-- Parte superior (contenido centrado) -->
+  <div class="mx-auto max-w-6xl px-6 py-10">
+    <nav
+      class="mb-7 flex flex-wrap justify-center gap-6 text-sm"
+      style="color: var(--muted);"
+      aria-label="Footer navigation"
+    >
+      <a
+        class="transition-colors hover:text-(--accent)"
+        href="#about"
+        >{cv.ui.nav.about}</a
+      >
+      <a
+        class="transition-colors hover:text-(--accent)"
+        href="#experience"
+        >{cv.ui.nav.experience}</a
+      >
+      <a
+        class="transition-colors hover:text-(--accent)"
+        href="#projects"
+        >{cv.ui.nav.projects}</a
+      >
+      <a
+        class="transition-colors hover:text-(--accent)"
+        href="#education"
+        >{cv.ui.nav.education}</a
+      >
+      <a
+        class="transition-colors hover:text-(--accent)"
+        href="#certifications"
+        >{cv.ui.nav.certifications}</a
+      >
+      <a
+        class="transition-colors hover:text-(--accent)"
+        href="#contact"
+        >{cv.ui.nav.contact}</a
+      >
+    </nav>
+
+    <div class="flex items-center justify-center gap-3">
+      {
+        socials.map((s) => (
+          <a
+            href={s.url}
+            target={s.tag !== 'GMAIL' ? '_blank' : undefined}
+            rel={s.tag !== 'GMAIL' ? 'noreferrer' : undefined}
+            aria-label={s.tag}
+            title={s.tag}
+            class={`group inline-flex h-10 w-10 items-center justify-center rounded-md shadow-sm transition hover:scale-[1.03] focus-visible:outline-none ${s.class}`}
+            style="border: 1px solid var(--border);"
+          >
+            <s.icon class="h-5 w-5 transition-colors duration-300 group-hover:text-(--accent)" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Barra inferior FULL WIDTH (fuera del max-width) -->
+  <div
+    class="w-full py-4 text-center text-sm"
+    style="
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+  "
+  >
+    © {year}{' '}
+    <span class="font-medium text-[var(--accent)]">{CV.hero.name}</span>.
+    {' '}All rights reserved.
+  </div>
+</footer>

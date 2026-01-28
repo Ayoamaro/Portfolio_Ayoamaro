@@ -1,25 +1,40 @@
 ---
 import EducationItem from './EducationItem.astro';
-import CV from '../data/CV_es.json';
 
-const educationRaw = (CV as any)?.education ?? [];
-const header = Array.isArray(educationRaw) ? educationRaw[0] : null;
-const itemsRaw = Array.isArray(educationRaw) ? educationRaw.slice(1) : [];
+type EducationHeader = {
+  title: string;
+  description: string;
+};
 
-const title = header?.title ?? 'Educación';
-const description = header?.description ?? '';
+type EducationItemType = {
+  institution: string;
+  degree: string;
+  startDate: string;
+  endDate: string;
+  grade?: string;
+  summary: string;
+  avatar: string;
+};
 
-const items = (itemsRaw as any[]).filter((it) => it?.degree && it?.institution);
+type EducationData = Array<EducationHeader | EducationItemType>;
+
+const { data } = Astro.props as { data: EducationData };
+const header = data[0] as EducationHeader;
+const items = data.slice(1) as EducationItemType[];
 ---
 
 <section
   id="education"
-  class="py-24"
+  class="scroll-mt-28 py-24"
 >
   <div class="container mx-auto w-full max-w-5xl px-4">
     <header class="text-center">
-      <h2 class="text-5xl font-extrabold tracking-tight text-white">{title}</h2>
-      <p class="mx-auto mt-3 max-w-3xl text-zinc-300">{description}</p>
+      <h2 class="text-5xl font-extrabold tracking-tight text-(--text)">
+        {header.title}
+      </h2>
+      <p class="mx-auto mt-3 max-w-3xl text-(--muted)">
+        {header.description}
+      </p>
     </header>
 
     <ul class="mt-14">

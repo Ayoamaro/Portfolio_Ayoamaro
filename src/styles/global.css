@@ -1,1 +1,125 @@
 @import 'tailwindcss';
+
+/* ==============================
+   LIGHT THEME
+   ============================== */
+:root {
+  /* Backgrounds */
+  --bg: #ffffff;
+  --nav-bg: #ffffff;
+  --surface: #f7f7f7;
+
+  /* Text */
+  --text: #000000;
+  --text-footer: #ffffff;
+  --muted: rgba(0, 0, 0, 0.8);
+
+  /* Accent */
+  --accent: #fd6f00;
+  --accent-hover: #e66300;
+  --accent-contrast: #ffffff;
+
+  /* Borders / separators */
+  --border: rgba(0, 0, 0, 0.12);
+
+  /* Focus */
+  --focus: rgba(253, 111, 0, 0.5);
+}
+
+/* ==============================
+   DARK THEME
+   ============================== */
+html.dark {
+  /* Backgrounds */
+  --bg: #1e1e1e;
+  --nav-bg: #1e1e1e;
+  --surface: #2a2a2a;
+
+  /* Text */
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.7);
+
+  /* Accent */
+  --accent: #fd6f00;
+  --accent-hover: #ff8120;
+  --accent-contrast: #000000;
+
+  /* Borders / separators */
+  --border: rgba(255, 255, 255, 0.14);
+
+  /* Focus */
+  --focus: rgba(253, 111, 0, 0.6);
+}
+
+/* ==============================
+   BASE STYLES (migrados del Layout)
+   ============================== */
+html {
+  font-family: 'Inter Variable', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ==============================
+   LINKS
+   ============================== */
+a {
+  color: var(--text);
+  text-underline-offset: 3px;
+}
+
+/* Navbar hover */
+header nav a:hover {
+  color: var(--accent);
+}
+
+/* Footer hover */
+footer nav a:hover {
+  color: var(--accent);
+}
+
+/* ==============================
+   NAVBAR ACTIVE (scroll spy)
+   ============================== */
+.nav-link-active {
+  color: var(--accent) !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* ==============================
+   PROJECTS – ACTIVE FILTER
+   ============================== */
+.project-filter.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* ==============================
+   ACCESSIBILITY
+   ============================== */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ==============================
+   THEME ICONS
+   ============================== */
+.theme-moon {
+  display: none;
+}
+html.dark .theme-sun {
+  display: none;
+}
+html.dark .theme-moon {
+  display: inline;
+}

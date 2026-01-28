@@ -8,15 +8,13 @@ type Certification = {
   credentialUrl: string;
 };
 
-const { item } = Astro.props as {
-  item: Certification;
-};
-
+const { item } = Astro.props as { item: Certification };
 const dateLabel = `${item.issueDate}`;
 ---
 
 <article
-  class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm md:p-8 dark:border-neutral-800 dark:bg-neutral-900"
+  class="rounded-2xl p-6 shadow-sm md:p-8"
+  style="background: var(--surface); border: 1px solid var(--border);"
 >
   <div
     class="flex flex-col items-start gap-6 md:flex-row md:items-center md:gap-10"
@@ -26,31 +24,29 @@ const dateLabel = `${item.issueDate}`;
       <img
         src={item.image}
         alt={`Certificación ${item.issuer}`}
-        class="h-28 w-28 rounded-2xl object-contain md:h-32 md:w-32"
+        class="h-28 w-28 object-contain md:h-32 md:w-32"
         loading="lazy"
       />
     </div>
 
     <!-- Texto -->
     <div class="w-full">
-      <p
-        class="relative text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
-      >
-        <span class="text-orange-500">“</span>
+      <p class="relative text-sm leading-relaxed text-(--muted)">
+        <span class="text-(--accent)">“</span>
         {item.summary}
-        <span class="text-orange-500">”</span>
+        <span class="text-(--accent)">”</span>
       </p>
 
       <div class="mt-4">
-        <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+        <h3 class="text-lg font-semibold text-(--text)">
           {item.issuer}
         </h3>
 
-        <p class="text-sm text-neutral-700 dark:text-neutral-200">
+        <p class="text-sm text-(--muted)">
           {item.title}
         </p>
 
-        <p class="mt-1 text-xs text-orange-500">
+        <p class="mt-1 text-xs text-(--accent)">
           Fecha de emisión: {dateLabel}
         </p>
 
@@ -58,7 +54,7 @@ const dateLabel = `${item.issueDate}`;
           href={item.credentialUrl}
           target="_blank"
           rel="noreferrer"
-          class="mt-4 inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm text-neutral-800 hover:bg-neutral-50 dark:border-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-800/60"
+          class="mt-4 inline-flex items-center gap-2 rounded-xl border border-(--border) bg-(--surface) px-4 py-2 text-sm font-semibold text-(--text) shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))] focus-visible:outline-none"
         >
           Ver credencial <span aria-hidden="true">↗</span>
         </a>

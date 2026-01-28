@@ -1,5 +1,4 @@
 ---
-import CV from '../data/CV_es.json';
 import ReactIcon from './icons/React.astro';
 import TailwindIcon from './icons/Tailwind.astro';
 import NodeIcon from './icons/Node.astro';
@@ -18,19 +17,51 @@ const ICONS = {
   java: JavaIcon,
   php: PhpIcon,
   mysql: MySqlIcon,
-
   html: HtmlIcon,
   css: CssIcon,
   javascript: JavascriptIcon,
   vue: VueIcon,
 } as const;
 
-const { about, skills, tools } = CV;
+type AboutData = {
+  about: {
+    title: string;
+    description: string;
+    image: string;
+  };
+  skills: Array<{
+    name: string;
+    level: number;
+    icon: keyof typeof ICONS;
+  }>;
+  tools: Array<{
+    icon: keyof typeof ICONS;
+    level: number;
+  }>;
+};
+
+const { data } = Astro.props as { data: AboutData };
+const { about, skills, tools } = data;
+
+const clamp = (n: number) => Math.max(0, Math.min(100, n));
+
+const TOOL_LABELS: Record<keyof typeof ICONS, string> = {
+  react: 'React',
+  tailwind: 'Tailwind CSS',
+  node: 'Node.js',
+  java: 'Java',
+  php: 'PHP',
+  mysql: 'MySQL',
+  html: 'HTML',
+  css: 'CSS',
+  javascript: 'JavaScript',
+  vue: 'Vue',
+};
 ---
 
 <section
   id="about"
-  class="py-24"
+  class="scroll-mt-28 py-24"
 >
   <div class="mx-auto max-w-5xl px-6">
     <div class="grid items-center gap-10 md:grid-cols-2">
@@ -40,20 +71,19 @@ const { about, skills, tools } = CV;
           src={about.image}
           alt={about.title}
           loading="eager"
-          class="object-cover shadow-lg sm:h-72 sm:w-72 md:h-120 md:w-100"
+          class="object-cover drop-shadow-lg sm:h-72 sm:w-72 md:h-120 md:w-100"
         />
       </div>
 
       <!-- Contenido -->
       <div>
         <h2
-          class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-slate-50"
+          class="text-4xl font-extrabold tracking-tight text-(--text) sm:text-5xl"
         >
           {about.title}
         </h2>
-        <p
-          class="mx-auto mt-4 max-w-2xl text-pretty text-slate-600 dark:text-slate-300"
-        >
+
+        <p class="mx-auto mt-4 max-w-2xl text-pretty text-(--muted)">
           {about.description}
         </p>
 
@@ -61,24 +91,41 @@ const { about, skills, tools } = CV;
         <div class="mt-5 space-y-6">
           {
             skills.map((skill) => {
-              const SkillIcon = ICONS[skill.icon as keyof typeof ICONS];
+              if (!skill?.name) throw new Error('[About] Skill missing name');
+              if (typeof skill.level !== 'number')
+                throw new Error(`[About] Skill "${skill.name}" missing level`);
+              if (!skill.icon)
+                throw new Error(`[About] Skill "${skill.name}" missing icon`);
+
+              const SkillIcon = ICONS[skill.icon];
+              const value = clamp(skill.level);
+
               return (
                 <div>
                   <div class="mb-2 flex items-center justify-between">
                     <div class="flex items-center gap-2">
-                      <span class="inline-flex h-5 w-5 text-white">
-                        <SkillIcon />
+                      <span
+                        class="inline-flex h-5 w-5 text-(--text)"
+                        aria-hidden="true"
+                      >
+                        <SkillIcon class="h-5 w-5" />
                       </span>
-                      <span class="font-medium text-white">{skill.name}</span>
+                      <span class="font-medium text-(--text)">
+                        {skill.name}
+                      </span>
                     </div>
 
-                    <span class="text-sm text-white/50">{skill.level}%</span>
+                    <span class="text-sm text-(--muted)">{value}%</span>
                   </div>
 
-                  <div class="h-2 w-full rounded-full bg-slate-700">
+                  <div
+                    class="h-2 w-full rounded-full"
+                    style="background: var(--border);"
+                    aria-hidden="true"
+                  >
                     <div
-                      class="h-2 rounded-full bg-orange-500"
-                      style={`width: ${skill.level}%`}
+                      class="h-2 rounded-full"
+                      style={`width: ${value}%; background: var(--accent);`}
                     />
                   </div>
                 </div>
@@ -91,42 +138,55 @@ const { about, skills, tools } = CV;
         <div class="mt-10 flex flex-wrap gap-4">
           {
             tools.map((tool) => {
-              const ToolIcon = ICONS[tool.icon as keyof typeof ICONS];
-              const value = tool.level; // 0..100
+              if (!tool?.icon) throw new Error('[About] Tool missing icon');
+              if (typeof tool.level !== 'number')
+                throw new Error(`[About] Tool "${tool.icon}" missing level`);
+
+              const ToolIcon = ICONS[tool.icon];
+              const value = clamp(tool.level);
+              const label = TOOL_LABELS[tool.icon] ?? tool.icon;
 
               return (
-                <div class="relative h-14 w-14">
-                  {/* Ring */}
+                <div
+                  class="relative h-14 w-14"
+                  role="progressbar"
+                  aria-label={`Nivel de ${label}`}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow={value}
+                  title={`${label}`}
+                >
                   <svg
                     viewBox="0 0 36 36"
                     class="h-14 w-14 -rotate-90"
+                    aria-hidden="true"
                   >
-                    {/* Fondo */}
                     <circle
                       cx="18"
                       cy="18"
                       r="15.915"
                       fill="none"
-                      stroke="rgb(51 65 85)"
+                      stroke="var(--border)"
                       stroke-width="3.5"
                     />
-                    {/* Progreso */}
                     <circle
                       cx="18"
                       cy="18"
                       r="15.915"
                       fill="none"
-                      stroke="rgb(249 115 22)"
+                      stroke="var(--accent)"
                       stroke-width="3.5"
                       stroke-linecap="round"
                       stroke-dasharray={`${value} 100`}
                     />
                   </svg>
 
-                  {/* Icono */}
-                  <div class="absolute inset-0 grid place-items-center">
-                    <span class="inline-flex h-6 w-6 text-white">
-                      <ToolIcon />
+                  <div
+                    class="absolute inset-0 grid place-items-center"
+                    aria-hidden="true"
+                  >
+                    <span class="inline-flex h-6 w-6 text-(--text)">
+                      <ToolIcon class="h-6 w-6" />
                     </span>
                   </div>
                 </div>

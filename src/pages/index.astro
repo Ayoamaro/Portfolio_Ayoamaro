@@ -1,17 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Education from '../components/Education.astro';
-import Certifications from '../components/Certifications.astro';
+import CV from '../data/CV_es.json';
 ---
 
-<Layout title="Home" />
-<Hero />
-<About />
-<Experience />
-<Projects />
-<Education />
-<Certifications />
+<Layout
+  title="Portfolio de Ayoamaro - Desarrollador Web"
+  lang="es"
+  cv={CV}
+/>

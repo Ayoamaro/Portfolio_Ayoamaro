@@ -1,69 +1,102 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+const { lang, cv } = Astro.props as { lang: 'es' | 'en'; cv: any };
+const otherHref = lang === 'es' ? '/en' : '/';
+const flagIcon =
+  lang === 'es' ? 'twemoji:flag-united-kingdom' : 'twemoji:flag-spain';
+
+const ariaLabel = lang === 'es' ? 'Cambiar a inglés' : 'Cambiar a español';
 ---
 
-<header class="fixed top-0 left-0 z-50 w-full py-3 backdrop-blur">
+<header
+  class="fixed top-0 left-0 z-50 w-full py-3 backdrop-blur"
+  style="background: color-mix(in srgb, var(--nav-bg) 72%, transparent); border-bottom: 1px solid var(--nav-border);"
+>
   <div class="mx-auto w-full max-w-6xl px-4">
     <div class="flex items-center justify-end">
       <!-- DESKTOP -->
       <div
         class="hidden w-full items-center justify-center gap-10 text-sm font-medium md:flex"
       >
-        <nav class="flex items-center gap-10">
+        <nav class="flex items-center gap-10 text-(--nav-muted)">
           <a
-            class="text-white/80 hover:text-white"
-            href="#home"
-            >Home</a
-          >
-          <a
-            class="text-white/80 hover:text-white"
+            data-nav-link
+            data-section="about"
+            class="transition-colors hover:text-(--accent)"
             href="#about"
-            >About me</a
+            >{cv.ui.nav.about}</a
           >
           <a
-            class="text-white/80 hover:text-white"
+            data-nav-link
+            data-section="experience"
+            class="transition-colors hover:text-(--accent)"
             href="#experience"
-            >Experience</a
+            >{cv.ui.nav.experience}</a
           >
           <a
-            class="text-white/80 hover:text-white"
+            data-nav-link
+            data-section="projects"
+            class="transition-colors hover:text-(--accent)"
             href="#projects"
-            >Projects</a
+            >{cv.ui.nav.projects}</a
           >
           <a
-            class="text-white/80 hover:text-white"
+            data-nav-link
+            data-section="education"
+            class="transition-colors hover:text-(--accent)"
             href="#education"
-            >Education</a
+            >{cv.ui.nav.education}</a
           >
           <a
-            class="text-white/80 hover:text-white"
+            data-nav-link
+            data-section="certifications"
+            class="transition-colors hover:text-(--accent)"
+            href="#certifications"
+            >{cv.ui.nav.certifications}</a
+          >
+          <a
+            data-nav-link
+            data-section="contact"
+            class="transition-colors hover:text-(--accent)"
             href="#contact"
-            >Contact</a
+            >{cv.ui.nav.contact}</a
           >
         </nav>
 
         <div class="flex items-center gap-2">
           <button
             type="button"
-            class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+            data-theme-toggle
+            class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
             aria-label="Toggle theme"
+            title="Toggle theme"
           >
-            <Icon
-              name="ph:sun"
-              class="size-5"
-            />
+            <span class="theme-icon theme-sun">
+              <Icon
+                name="ph:sun"
+                class="size-5"
+              />
+            </span>
+            <span class="theme-icon theme-moon">
+              <Icon
+                name="ph:moon"
+                class="size-5"
+              />
+            </span>
           </button>
 
-          <button
-            type="button"
-            class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
-            aria-label="Change language"
+          <a
+            href={otherHref}
+            class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
+            aria-label={ariaLabel}
+            title={ariaLabel}
           >
             <Icon
-              name="twemoji:flag-spain"
+              name={flagIcon}
               class="size-5"
             />
-          </button>
+          </a>
         </div>
       </div>
 
@@ -71,33 +104,45 @@ import { Icon } from 'astro-icon/components';
       <div class="flex items-center gap-2 md:hidden">
         <button
           type="button"
-          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          data-theme-toggle
+          class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
           aria-label="Toggle theme"
+          title="Toggle theme"
         >
-          <Icon
-            name="ph:sun"
-            class="size-5"
-          />
+          <span class="theme-icon theme-sun">
+            <Icon
+              name="ph:sun"
+              class="size-5"
+            />
+          </span>
+          <span class="theme-icon theme-moon">
+            <Icon
+              name="ph:moon"
+              class="size-5"
+            />
+          </span>
         </button>
 
-        <button
-          type="button"
-          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
-          aria-label="Change language"
+        <a
+          href={otherHref}
+          class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
+          aria-label={ariaLabel}
+          title={ariaLabel}
         >
           <Icon
-            name="twemoji:flag-spain"
+            name={flagIcon}
             class="size-5"
           />
-        </button>
+        </a>
 
         <button
           id="menuBtn"
           type="button"
-          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
           aria-controls="mobileMenu"
           aria-expanded="false"
           aria-label="Open menu"
+          title="Open menu"
         >
           <Icon
             name="ph:list"
@@ -116,19 +161,25 @@ import { Icon } from 'astro-icon/components';
   >
     <div
       id="menuBackdrop"
-      class="absolute inset-0 bg-black/60"
+      class="absolute inset-0"
+      style="background: color-mix(in srgb, #000 60%, transparent);"
     >
     </div>
 
     <div
-      class="absolute top-20 right-4 w-[min(22rem,calc(100%-2rem))] rounded-2xl border border-white/10 bg-neutral-950/95 p-4 shadow-xl backdrop-blur"
+      class="absolute top-20 right-4 w-[min(22rem,calc(100%-2rem))] rounded-2xl p-4 shadow-xl backdrop-blur"
+      style="
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+        border: 1px solid var(--border);
+      "
     >
       <div class="flex items-center justify-end">
         <button
           id="closeBtn"
           type="button"
-          class="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-lg p-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
           aria-label="Close menu"
+          title="Close menu"
         >
           <Icon
             name="ph:x"
@@ -139,34 +190,34 @@ import { Icon } from 'astro-icon/components';
 
       <div class="mt-2 grid gap-2 text-sm font-medium">
         <a
-          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
-          href="#home"
-          >Home</a
-        >
-        <a
-          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-xl px-3 py-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
           href="#about"
-          >About me</a
+          >{cv.ui.nav.about}</a
         >
         <a
-          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-xl px-3 py-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
           href="#experience"
-          >Experience</a
+          >{cv.ui.nav.experience}</a
         >
         <a
-          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-xl px-3 py-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
           href="#projects"
-          >Projects</a
+          >{cv.ui.nav.projects}</a
         >
         <a
-          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-xl px-3 py-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
           href="#education"
-          >Education</a
+          >{cv.ui.nav.education}</a
         >
         <a
-          class="rounded-xl px-3 py-2 text-white/80 hover:bg-white/10 hover:text-white"
+          class="rounded-xl px-3 py-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
+          href="#certifications"
+          >{cv.ui.nav.certifications}</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-(--muted) hover:bg-black/5 hover:text-(--text) focus-visible:outline-none dark:hover:bg-white/10 dark:hover:text-white"
           href="#contact"
-          >Contact</a
+          >{cv.ui.nav.contact}</a
         >
       </div>
     </div>
