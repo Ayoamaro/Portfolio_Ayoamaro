@@ -87,7 +87,13 @@
   "projects": [
     {
       "title": "Mis Proyectos",
-      "description": "Proyectos personales y colaborativos, donde aplico mis habilidades en desarrollo web para crear soluciones innovadoras y funcionales."
+      "description": "Proyectos personales y colaborativos, donde aplico mis habilidades en desarrollo web para crear soluciones innovadoras y funcionales.",
+      "labels": {
+        "seeMore": "Ver más...",
+        "seeLess": "Ver menos",
+        "preview": "Prueba ↗",
+        "code": "Código ↗"
+      }
     },
     {
       "title": "Landing con Astro + Tailwind",
@@ -127,7 +133,7 @@
       "degree": "CFGS Desarrollo de Aplicaciones Multiplataforma",
       "startDate": "Septiembre 2020",
       "endDate": "Junio 2023",
-      "grade": "7",
+      "grade": "Nota media: 7",
       "summary": "Formación orientada al desarrollo de aplicaciones multiplataforma, abarcando programación, bases de datos y diseño de interfaces. Desarrollo de aplicaciones multiproceso y multihilo, gestión de sistemas informáticos e implantación y mantenimiento de soluciones ERP-CRM.",
       "avatar": "/img/education/dam-avatar.webp"
     },
@@ -136,7 +142,7 @@
       "degree": "CFGS Desarrollo de Aplicaciones Web",
       "startDate": "Septiembre 2017",
       "endDate": "Junio 2020",
-      "grade": "7.04",
+      "grade": "Nota media: 7.04",
       "summary": "Formación especializada en el desarrollo de aplicaciones web, desde la implementación hasta el despliegue y mantenimiento. Uso de tecnologías web modernas, acceso seguro a datos y aplicación de criterios de accesibilidad, usabilidad y calidad según estándares profesionales.",
       "avatar": "/img/education/daw-avatar.webp"
     }
@@ -152,6 +158,7 @@
       "issueDate": "Febrero 2025",
       "summary": "Certificación enfocada en el diseño de prompts efectivos para modelos generativos en Vertex AI. Aplicación de técnicas de prompt engineering, análisis de imágenes y generación multimodal para obtener resultados precisos y reutilizables en entornos reales.",
       "image": "/img/certifications/google.webp",
+      "show": "Ver credencial ↗",
       "credentialUrl": "https://www.credly.com/badges/25469d21-cfa8-4cb8-aa54-372f9e081869/linked_in_profile"
     },
     {
@@ -159,6 +166,7 @@
       "title": "Open Source Back-End Web Developer",
       "issueDate": "Noviembre 2025",
       "summary": "Certificación que valida habilidades en desarrollo Back-End utilizando tecnologías de código abierto. Incluye diseño y desarrollo de APIs RESTful, gestión de bases de datos, autenticación y seguridad, así como despliegue y mantenimiento de aplicaciones web escalables.",
+      "show": "Ver credencial ↗",
       "image": "/img/certifications/sepe.webp",
       "credentialUrl": "https://www.credly.com/"
     },
@@ -167,6 +175,7 @@
       "title": "JavaScript Profesional",
       "issueDate": "Abril 2020",
       "summary": "Certificación que valida conocimientos en algoritmos y estructuras de datos utilizando JavaScript. Incluye resolución de problemas, manipulación de datos y optimización de código para mejorar la eficiencia y el rendimiento de las aplicaciones.",
+      "show": "Ver credencial ↗",
       "image": "/img/certifications/openwebinars.webp",
       "credentialUrl": "https://openwebinars.net/cert/z56mz"
     },
@@ -175,6 +184,7 @@
       "title": "Vue.js",
       "issueDate": "Marzo 2020",
       "summary": "Certificación que valida conocimientos en el framework Vue.js para el desarrollo de aplicaciones web. Incluye creación de componentes, gestión del estado, enrutamiento y consumo de APIs para construir aplicaciones interactivas y dinámicas.",
+      "show": "Ver credencial ↗",
       "image": "/img/certifications/openwebinars.webp",
       "credentialUrl": "https://openwebinars.net/cert/a7rgD"
     }

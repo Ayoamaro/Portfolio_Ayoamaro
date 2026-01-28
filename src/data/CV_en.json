@@ -87,7 +87,13 @@
   "projects": [
     {
       "title": "My Projects",
-      "description": "Personal and collaborative projects, where I apply my web development skills to create innovative and functional solutions."
+      "description": "Personal and collaborative projects, where I apply my web development skills to create innovative and functional solutions.",
+      "labels": {
+        "seeMore": "See more...",
+        "seeLess": "See less",
+        "preview": "Preview ↗",
+        "code": "Code ↗"
+      }
     },
     {
       "title": "Landing Page Responsive (Astro)",
@@ -127,7 +133,7 @@
       "degree": "CFGS Multi-Platform Application Development",
       "startDate": "September 2020",
       "endDate": "June 2023",
-      "grade": "7",
+      "grade": "Average grade: 7",
       "summary": "Training focused on multi-platform application development, covering programming, databases and interface design. Development of multi-process and multi-thread applications, system management and implementation and maintenance of ERP-CRM solutions.",
       "avatar": "/img/education/dam-avatar.webp"
     },
@@ -136,7 +142,7 @@
       "degree": "CFGS Web Application Development",
       "startDate": "September 2017",
       "endDate": "June 2020",
-      "grade": "7.04",
+      "grade": "Average grade: 7.04",
       "summary": "Specialized training in web application development, from implementation to deployment and maintenance. Use of modern web technologies, secure data access and application of accessibility, usability and quality criteria according to professional standards.",
       "avatar": "/img/education/daw-avatar.webp"
     }
@@ -152,6 +158,7 @@
       "issueDate": "February 2025",
       "summary": "Certification focused on designing effective prompts for generative models in Vertex AI. Application of prompt engineering techniques, image analysis and multimodal generation to obtain precise and reusable results in real environments.",
       "image": "/img/certifications/google.webp",
+      "show": "Show credential ↗",
       "credentialUrl": "https://www.credly.com/badges/25469d21-cfa8-4cb8-aa54-372f9e081869/linked_in_profile"
     },
     {
@@ -160,6 +167,7 @@
       "issueDate": "November 2025",
       "summary": "Certification validating skills in Back-End development using open-source technologies. Includes design and development of RESTful APIs, database management, authentication and security, as well as deployment and maintenance of scalable web applications.",
       "image": "/img/certifications/sepe.webp",
+      "show": "Show credential ↗",
       "credentialUrl": "https://www.credly.com/"
     },
     {
@@ -168,6 +176,7 @@
       "issueDate": "April 2020",
       "summary": "Certification that validates knowledge in algorithms and data structures using JavaScript. Includes problem solving, data manipulation and code optimization to improve the efficiency and performance of applications.",
       "image": "/img/certifications/openwebinars.webp",
+      "show": "Show credential ↗",
       "credentialUrl": "https://openwebinars.net/cert/z56mz"
     },
     {
@@ -176,6 +185,7 @@
       "issueDate": "March 2020",
       "summary": "Certification that validates knowledge in the Vue.js framework for web application development. Includes component creation, state management, routing and API consumption to build interactive and dynamic applications.",
       "image": "/img/certifications/openwebinars.webp",
+      "show": "Show credential ↗",
       "credentialUrl": "https://openwebinars.net/cert/a7rgD"
     }
   ],
