@@ -2,7 +2,7 @@
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Ayoze Amaro Estévez",
-    "role": "Front-End Developer",
+    "roleLines": ["Front-End", "Developer"],
     "description": "Senior Web Developer specialized in JavaScript, Vue and TypeScript. I love creating clear, fast and well-crafted interfaces, adapted to the current market.",
     "cta": {
       "label": "Contact me",
@@ -151,7 +151,7 @@
       "title": "Prompt Design in Vertex AI Skill Badge",
       "issueDate": "February 2025",
       "summary": "Certification focused on designing effective prompts for generative models in Vertex AI. Application of prompt engineering techniques, image analysis and multimodal generation to obtain precise and reusable results in real environments.",
-      "image": "/certifications/google-ai.webp",
+      "image": "/img/certifications/google.webp",
       "credentialUrl": "https://www.credly.com/badges/25469d21-cfa8-4cb8-aa54-372f9e081869/linked_in_profile"
     },
     {
@@ -159,7 +159,7 @@
       "title": "Open Source Back-End Web Developer",
       "issueDate": "November 2025",
       "summary": "Certification validating skills in Back-End development using open-source technologies. Includes design and development of RESTful APIs, database management, authentication and security, as well as deployment and maintenance of scalable web applications.",
-      "image": "/certifications/sepe-backend.webp",
+      "image": "/img/certifications/sepe.webp",
       "credentialUrl": "https://www.credly.com/"
     },
     {
@@ -167,7 +167,7 @@
       "title": "JavaScript Algorithms and Data Structures",
       "issueDate": "April 2020",
       "summary": "Certification that validates knowledge in algorithms and data structures using JavaScript. Includes problem solving, data manipulation and code optimization to improve the efficiency and performance of applications.",
-      "image": "/certifications/openwebinars-js.webp",
+      "image": "/img/certifications/openwebinars.webp",
       "credentialUrl": "https://openwebinars.net/cert/z56mz"
     },
     {
@@ -175,13 +175,38 @@
       "title": "Vue.js",
       "issueDate": "March 2020",
       "summary": "Certification that validates knowledge in the Vue.js framework for web application development. Includes component creation, state management, routing and API consumption to build interactive and dynamic applications.",
-      "image": "/certifications/openwebinars-vue.webp",
+      "image": "/img/certifications/openwebinars.webp",
       "credentialUrl": "https://openwebinars.net/cert/a7rgD"
     }
   ],
   "contact": {
-    "title": "Contact Me",
+    "title": "Contact me",
     "description": "Do you have a project in mind or just want to say hello? Feel free to send me a message. I'm here to help!",
-    "email": "ayoze.amaro@gmail.com"
+    "email": "ayoze.amaro@gmail.com",
+    "form": {
+      "emailLabel": "Email",
+      "emailPlaceholder": "Enter your email",
+      "submit": "Contact me!"
+    },
+    "mailto": {
+      "subject": "Contact from the portfolio",
+      "bodyIntro": "Hi Ayoze,",
+      "bodyEmailLine": "My email is:",
+      "bodyMessageLine": "Message:"
+    }
+  },
+  "ui": {
+    "nav": {
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects",
+      "education": "Education",
+      "certifications": "Certifications",
+      "contact": "Contact"
+    },
+    "language": {
+      "es": "ES",
+      "en": "EN"
+    }
   }
 }

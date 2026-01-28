@@ -5,7 +5,7 @@
     "roleLines": ["Desarrollador", "Front-End"],
     "description": "Técnico superior en Desarrollo Web especializado en JavaScript, Vue y TypeScript. Me encanta crear interfaces claras, rápidas y bien cuidadas, adaptadas al mercado actual.",
     "cta": {
-      "label": "Contáctame",
+      "label": "¡Contáctame!",
       "href": "#contact"
     },
     "image": "./img/ayo-profile1.png",
@@ -181,7 +181,33 @@
   ],
   "contact": {
     "title": "Contáctame",
-    "description": "¿Tienes un proyecto en mente o simplemente quieres saludar? No dudes en enviarme un mensaje. ¡Estoy aquí para ayudarte!",
-    "email": "ayoze.amaro@gmail.com"
+    "description": "¿Tienes un proyecto en mente o simplemente quieres saludarme? No dudes en enviarme un mensaje. ¡Estoy aquí para ayudarte!",
+    "email": "ayoze.amaro@gmail.com",
+    "form": {
+      "emailLabel": "Email",
+      "emailPlaceholder": "Introduce tu email",
+      "submit": "¡Contáctame!"
+    },
+    "mailto": {
+      "subject": "Contacto desde el portfolio",
+      "bodyIntro": "Hola Ayoze,",
+      "bodyEmailLine": "Mi email es:",
+      "bodyMessageLine": "Mensaje:"
+    }
+  },
+  "ui": {
+    "nav": {
+      "projects": "Proyectos",
+      "about": "Sobre mí",
+      "experience": "Experiencia",
+      "education": "Educación",
+      "certifications": "Certificaciones",
+      "contact": "Contacto"
+    },
+    "language": {
+      "label": "Idioma",
+      "es": "ES",
+      "en": "EN"
+    }
   }
 }
