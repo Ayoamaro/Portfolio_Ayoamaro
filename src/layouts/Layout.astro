@@ -42,8 +42,6 @@ const { lang, cv } = Astro.props as LayoutProps;
       content={Astro.generator}
     />
     <title>{title}</title>
-
-    <!-- Theme toggle (no flash) -->
     <script is:inline>
       (() => {
         const getPreferredTheme = () => {
@@ -63,10 +61,8 @@ const { lang, cv } = Astro.props as LayoutProps;
           localStorage.setItem('theme', theme);
         };
 
-        // apply on load (avoid flash)
         applyTheme(getPreferredTheme());
 
-        // global listener (works for desktop+mobile theme buttons)
         document.addEventListener('click', (e) => {
           const btn = e.target?.closest?.('[data-theme-toggle]');
           if (!btn) return;

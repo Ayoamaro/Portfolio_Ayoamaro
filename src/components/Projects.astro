@@ -25,6 +25,12 @@ type Project = {
 type ProjectsHeader = {
   title: string;
   description: string;
+  labels: {
+    seeMore: string;
+    seeLess: string;
+    preview: string;
+    code: string;
+  };
 };
 
 type ProjectsData = Array<ProjectsHeader | Project>;
@@ -33,7 +39,6 @@ const { data } = Astro.props as { data: ProjectsData };
 const sectionHeader = data[0] as ProjectsHeader;
 const projects = data.slice(1) as Project[];
 
-// Categorías dinámicas
 const categories: string[] = [];
 projects.forEach((p) => {
   if (!categories.includes(p.category)) categories.push(p.category);
@@ -49,20 +54,17 @@ const filterButtons: { key: string; label: string }[] = [
 
 const ACTIONS = {
   preview: {
-    label: 'Preview',
     icon: LinkIcon,
     class:
-      'bg-[var(--surface)] border-[var(--border)] text-[var(--text)] hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
+      'bg-(--surface) border-(--border) text-(--text) hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
   },
   github: {
-    label: 'Code',
     icon: GitHubIcon,
     class:
-      'bg-[var(--surface)] border-[var(--border)] text-[var(--text)] hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
+      'bg-(--surface) border-(--border) text-(--text) hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
   },
 };
 
-// Tags con color + icon (se mantienen “brand”, pero ya no dependen del theme)
 const TAGS: Record<string, { label: string; icon: any; class: string }> = {
   Astro: {
     label: 'Astro',
@@ -185,10 +187,11 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                   </p>
 
                   <button
-                    type="button"
-                    class="project-toggle mt-2 text-sm font-semibold text-(--accent) transition-colors hover:text-(--accent-hover) focus-visible:outline-none"
+                    class="project-toggle mt-2 hidden text-sm font-semibold text-(--accent) transition-colors hover:text-(--accent-hover) focus-visible:outline-none"
+                    data-see-more={sectionHeader.labels.seeMore}
+                    data-see-less={sectionHeader.labels.seeLess}
                   >
-                    Ver más...
+                    {sectionHeader.labels.seeMore}
                   </button>
                 </div>
 
@@ -228,8 +231,7 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                     ]}
                   >
                     <ACTIONS.preview.icon class="size-5" />
-                    {ACTIONS.preview.label}
-                    <span aria-hidden="true">↗</span>
+                    {sectionHeader.labels.preview}
                   </a>
 
                   <a
@@ -243,8 +245,7 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                     ]}
                   >
                     <ACTIONS.github.icon class="size-5" />
-                    {ACTIONS.github.label}
-                    <span aria-hidden="true">↗</span>
+                    {sectionHeader.labels.code}
                   </a>
                 </div>
               </div>
@@ -256,7 +257,6 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
   </div>
 
   <script is:inline>
-    // Filtros
     const buttons = Array.from(document.querySelectorAll('.project-filter'));
     const cards = Array.from(document.querySelectorAll('.project-card'));
 
@@ -286,22 +286,52 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
       });
     });
 
-    // Ver más / Ver menos
     const toggles = Array.from(document.querySelectorAll('.project-toggle'));
 
-    toggles.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const wrapper = btn.closest('div');
-        const p = wrapper.querySelector('.project-desc');
+    function isTruncated(el) {
+      return (
+        el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth
+      );
+    }
 
+    function setupProjectToggle(btn) {
+      const wrapper = btn.closest('div');
+      const p = wrapper.querySelector('.project-desc');
+
+      const seeMore = btn.dataset.seeMore;
+      const seeLess = btn.dataset.seeLess;
+
+      p.classList.add('line-clamp-3');
+
+      const truncated = isTruncated(p);
+      btn.classList.toggle('hidden', !truncated);
+
+      if (!truncated) return;
+
+      btn.addEventListener('click', () => {
         const isClamped = p.classList.contains('line-clamp-3');
+
         if (isClamped) {
           p.classList.remove('line-clamp-3');
-          btn.textContent = 'Ver menos';
+          btn.textContent = seeLess;
+          btn.setAttribute('aria-expanded', 'true');
         } else {
           p.classList.add('line-clamp-3');
-          btn.textContent = 'Ver más...';
+          btn.textContent = seeMore;
+          btn.setAttribute('aria-expanded', 'false');
         }
+      });
+    }
+
+    toggles.forEach(setupProjectToggle);
+    window.addEventListener('resize', () => {
+      toggles.forEach((btn) => {
+        const wrapper = btn.closest('div');
+        const p = wrapper.querySelector('.project-desc');
+        const expanded = !p.classList.contains('line-clamp-3');
+        if (expanded) return;
+
+        btn.classList.toggle('hidden', !isTruncated(p));
       });
     });
   </script>
