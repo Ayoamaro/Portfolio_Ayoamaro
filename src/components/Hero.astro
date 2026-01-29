@@ -5,19 +5,19 @@ import TecnoEmpleo from './icons/TecnoEmpleo.astro';
 
 const SOCIALS = {
   LINKEDIN: {
-    tag: 'LINKEDIN',
+    tag: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ayoamaro/',
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: LinkedIn,
   },
   INFOJOBS: {
-    tag: 'INFOJOBS',
+    tag: 'InfoJobs',
     url: 'https://www.infojobs.net/candidate/cv/view/index.xhtml',
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: InfoJobs,
   },
   TECNOEMPLEO: {
-    tag: 'TECNOEMPLEO',
+    tag: 'TecnoEmpleo',
     url: 'https://www.tecnoempleo.com/ayoze-amaro-estevez.mpt',
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: TecnoEmpleo,
@@ -35,10 +35,6 @@ type HeroData = {
 
 const { data } = Astro.props as { data: HeroData };
 const socials = [SOCIALS.LINKEDIN, SOCIALS.INFOJOBS, SOCIALS.TECNOEMPLEO];
-
-if (!data) throw new Error('[Hero] Missing prop: data');
-if (!Array.isArray(data.roleLines))
-  throw new Error('[Hero] data.roleLines must be an array');
 ---
 
 <section

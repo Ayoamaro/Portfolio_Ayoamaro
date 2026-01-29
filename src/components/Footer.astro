@@ -8,25 +8,25 @@ import TecnoEmpleo from './icons/TecnoEmpleo.astro';
 
 const SOCIALS = {
   GMAIL: {
-    tag: 'GMAIL',
+    tag: 'Gmail',
     url: `mailto:${CV.contact.email}`,
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: Gmail,
   },
   INFOJOBS: {
-    tag: 'INFOJOBS',
+    tag: 'InfoJobs',
     url: 'https://www.infojobs.net/candidate/cv/view/index.xhtml',
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: InfoJobs,
   },
   LINKEDIN: {
-    tag: 'LINKEDIN',
+    tag: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ayoamaro/',
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: LinkedIn,
   },
   TECNOEMPLEO: {
-    tag: 'TECNOEMPLEO',
+    tag: 'TecnoEmpleo',
     url: 'https://www.tecnoempleo.com/ayoze-amaro-estevez.mpt',
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: TecnoEmpleo,
@@ -41,13 +41,12 @@ const socials = [
 ];
 
 const year = new Date().getFullYear();
-const { lang, cv } = Astro.props as { lang: 'es' | 'en'; cv: any };
+const { cv } = Astro.props as { cv: any };
 ---
 
 <footer
   style="background: var(--bg); border-top: 1px solid var(--border); margin-top: 4rem;"
 >
-  <!-- Parte superior (contenido centrado) -->
   <div class="mx-auto max-w-6xl px-6 py-10">
     <nav
       class="mb-7 flex flex-wrap justify-center gap-6 text-sm"
@@ -91,8 +90,8 @@ const { lang, cv } = Astro.props as { lang: 'es' | 'en'; cv: any };
         socials.map((s) => (
           <a
             href={s.url}
-            target={s.tag !== 'GMAIL' ? '_blank' : undefined}
-            rel={s.tag !== 'GMAIL' ? 'noreferrer' : undefined}
+            target={s.tag !== 'Gmail' ? '_blank' : undefined}
+            rel={s.tag !== 'Gmail' ? 'noreferrer' : undefined}
             aria-label={s.tag}
             title={s.tag}
             class={`group inline-flex h-10 w-10 items-center justify-center rounded-md shadow-sm transition hover:scale-[1.03] focus-visible:outline-none ${s.class}`}

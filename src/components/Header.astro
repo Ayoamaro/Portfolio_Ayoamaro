@@ -2,11 +2,22 @@
 import { Icon } from 'astro-icon/components';
 
 const { lang, cv } = Astro.props as { lang: 'es' | 'en'; cv: any };
-const otherHref = lang === 'es' ? '/en' : '/';
-const flagIcon =
-  lang === 'es' ? 'twemoji:flag-united-kingdom' : 'twemoji:flag-spain';
+const I18N = {
+  es: {
+    otherHref: '/en',
+    flagIcon: 'twemoji:flag-united-kingdom',
+    langLabel: 'English',
+    themeLabel: 'Tema de color',
+  },
+  en: {
+    otherHref: '/',
+    flagIcon: 'twemoji:flag-spain',
+    langLabel: 'Español',
+    themeLabel: 'Theme color',
+  },
+} as const;
 
-const ariaLabel = lang === 'es' ? 'Cambiar a inglés' : 'Cambiar a español';
+const i18n = I18N[lang];
 ---
 
 <header
@@ -69,8 +80,8 @@ const ariaLabel = lang === 'es' ? 'Cambiar a inglés' : 'Cambiar a español';
             type="button"
             data-theme-toggle
             class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
-            aria-label="Toggle theme"
-            title="Toggle theme"
+            aria-label={i18n.themeLabel}
+            title={i18n.themeLabel}
           >
             <span class="theme-icon theme-sun">
               <Icon
@@ -87,13 +98,13 @@ const ariaLabel = lang === 'es' ? 'Cambiar a inglés' : 'Cambiar a español';
           </button>
 
           <a
-            href={otherHref}
+            href={i18n.otherHref}
             class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
-            aria-label={ariaLabel}
-            title={ariaLabel}
+            aria-label={i18n.langLabel}
+            title={i18n.langLabel}
           >
             <Icon
-              name={flagIcon}
+              name={i18n.flagIcon}
               class="size-5"
             />
           </a>
@@ -106,8 +117,8 @@ const ariaLabel = lang === 'es' ? 'Cambiar a inglés' : 'Cambiar a español';
           type="button"
           data-theme-toggle
           class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
-          aria-label="Toggle theme"
-          title="Toggle theme"
+          aria-label={i18n.themeLabel}
+          title={i18n.themeLabel}
         >
           <span class="theme-icon theme-sun">
             <Icon
@@ -124,13 +135,13 @@ const ariaLabel = lang === 'es' ? 'Cambiar a inglés' : 'Cambiar a español';
         </button>
 
         <a
-          href={otherHref}
+          href={i18n.otherHref}
           class="rounded-lg p-2 text-(--nav-muted) hover:bg-white/10 hover:text-(--nav-text) focus-visible:outline-none"
-          aria-label={ariaLabel}
-          title={ariaLabel}
+          aria-label={i18n.langLabel}
+          title={i18n.langLabel}
         >
           <Icon
-            name={flagIcon}
+            name={i18n.flagIcon}
             class="size-5"
           />
         </a>
