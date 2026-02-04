@@ -56,9 +56,9 @@
   ],
   "tools": [
     { "icon": "react", "level": 65 },
-    { "icon": "tailwind", "level": 70 },
-    { "icon": "node", "level": 80 },
-    { "icon": "java", "level": 50 },
+    { "icon": "tailwind", "level": 75 },
+    { "icon": "node", "level": 70 },
+    { "icon": "java", "level": 45 },
     { "icon": "php", "level": 60 },
     { "icon": "mysql", "level": 60 }
   ],
