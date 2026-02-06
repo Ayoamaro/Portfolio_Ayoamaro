@@ -168,7 +168,8 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                   src={p.image}
                   alt={p.title}
                   loading="lazy"
-                  class="h-full w-full object-contain p-6"
+                  decoding="async"
+                  class="block h-auto w-full"
                 />
               </div>
 
