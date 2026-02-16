@@ -96,13 +96,13 @@
       }
     },
     {
-      "title": "Landing con Astro + Tailwind",
-      "description": "Landing moderna y rápida con Astro + Tailwind, optimizada para SEO, accesibilidad y rendimiento. Desplegada en Vercel/Netlify para acceso público.",
+      "title": "Quiz de Los Simpsons",
+      "description": "Quiz interactivo de Los Simpsons que analiza las respuestas del usuario para determinar qué personaje se adapta mejor a su personalidad. Desplegada en Vercel para acceso público.",
       "category": "frontend",
-      "link": "https://tu-landing-astro.vercel.app",
-      "repo": "https://github.com/ayoamaro/landing-astro",
-      "tags": ["Astro", "TypeScript", "Tailwind"],
-      "image": "/img/projects/landing-astro.webp"
+      "link": "https://simpsons-quiz-xi.vercel.app/",
+      "repo": "https://github.com/Ayoamaro/Simpsons-Quiz",
+      "tags": ["Astro", "TypeScript", "Tailwind", "Vercel"],
+      "image": "/img/projects/quiz-simpsons.webp"
     },
     {
       "title": "App de Tareas (Vue + TypeScript)",
