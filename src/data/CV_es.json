@@ -105,11 +105,11 @@
       "image": "/img/projects/quiz-simpsons.webp"
     },
     {
-      "title": "App de Tareas (Vue + TypeScript)",
+      "title": "Plani",
       "description": "Aplicación CRUD de tareas con componentes reutilizables, validaciones y estado organizado. Construida con Vite y desplegada en una URL pública.",
       "category": "frontend",
       "link": "https://tu-todo-vue.netlify.app",
-      "repo": "https://github.com/ayoamaro/todo-vue-ts",
+      "repo": "https://github.com/Ayoamaro/Plani",
       "tags": ["Vue", "TypeScript", "Vite", "Pinia"],
       "image": "/img/projects/todo-vue.webp"
     },
