@@ -106,12 +106,12 @@
     },
     {
       "title": "Plani",
-      "description": "Aplicación CRUD de tareas con componentes reutilizables, validaciones y estado organizado. Construida con Vite y desplegada en una URL pública.",
+      "description": "Aplicación web de planificación semanal que organiza tareas por columnas y prioridades para mantener el flujo de trabajo claro y enfocado. Desplegada en Netlify para acceso público.",
       "category": "frontend",
       "link": "https://tu-todo-vue.netlify.app",
       "repo": "https://github.com/Ayoamaro/Plani",
-      "tags": ["Vue", "TypeScript", "Vite", "Pinia"],
-      "image": "/img/projects/todo-vue.webp"
+      "tags": ["Vue", "TypeScript", "Vite", "Pinia", "Netlify"],
+      "image": "/img/projects/plani-app.webp"
     },
     {
       "title": "API REST de Usuarios (Auth + Roles)",

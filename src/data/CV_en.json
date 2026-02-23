@@ -106,12 +106,12 @@
     },
     {
       "title": "Plani",
-      "description": "Tasks CRUD application with reusable components, validations and organized state. Built with Vite and deployed on a public URL.",
+      "description": "Web application for weekly planning that organizes tasks by columns and priorities to keep the workflow clear and focused. Deployed on Netlify for public access.",
       "category": "frontend",
       "link": "https://tu-todo-vue.netlify.app",
       "repo": "https://github.com/Ayoamaro/Plani",
-      "tags": ["Vue", "TypeScript", "Vite", "Pinia"],
-      "image": "/img/projects/todo-vue.webp"
+      "tags": ["Vue", "TypeScript", "Vite", "Pinia", "Netlify"],
+      "image": "/img/projects/plani-app.webp"
     },
     {
       "title": "Users REST API (Auth + Roles)",
