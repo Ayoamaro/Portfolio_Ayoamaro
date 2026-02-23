@@ -12,6 +12,7 @@ import PostgresIcon from './icons/PostgreSQL.astro';
 import SwaggerIcon from './icons/Swagger.astro';
 import GitHubIcon from './icons/GitHub.astro';
 import LinkIcon from './icons/Link.astro';
+import NetlifyIcon from './icons/Netlify.astro';
 
 type Project = {
   title: string;
@@ -120,6 +121,11 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
   Swagger: {
     label: 'Swagger',
     icon: SwaggerIcon,
+    class: 'bg-[--bg] border-[--border] text-[--text]',
+  },
+  Netlify: {
+    label: 'Netlify',
+    icon: NetlifyIcon,
     class: 'bg-[--bg] border-[--border] text-[--text]',
   },
 };
