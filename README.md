@@ -1,7 +1,7 @@
 <div align="center">
   <a href="">
     <img
-      src="./docs/images/astro2.png"
+      src="./docs/images/astro1.png"
       alt="Portfolio Logo"
       width="120"
     />
