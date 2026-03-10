@@ -1,46 +1,73 @@
-# Astro Starter Kit: Basics
+<div align="center">
+  <a href="">
+    <img
+      src="./docs/images/astro2.png"
+      alt="Portfolio Logo"
+      width="120"
+    />
+  </a>
 
-```sh
-bun create astro@latest -- --template basics
+  <p />
+  <p>
+    <b>
+      Modern personal portfolio built with Astro and TypeScript, focused on performance, clean UI and professional presentation.
+    </b>
+  </p>
+
+  <p align="center">
+    <a href="">Live Demo</a>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <a href="#-introduction">Introduction</a>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <a href="#-stack">Stack</a>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <a href="#-features">Features</a>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+    <a href="#-project-structure">Project Structure</a>
+  </p>
+</div>
+
+---
+
+## 📝 Introduction
+
+This is my personal developer portfolio, created to showcase my professional experience, technical stack and selected projects. The project focuses on performance, accessibility and clean component architecture using modern web technologies. It is deployed in production with a custom domain and optimized for SEO and fast loading.
+
+---
+
+## 🛠️ Stack
+
+- ⚡ [**Astro**](https://astro.build/) – Modern server-first framework
+- 🟦 [**TypeScript**](https://www.typescriptlang.org/) – Strongly typed JavaScript
+- 🎨 [**Tailwind CSS**](https://tailwindcss.com/) – Utility-first styling
+- 🧩 [**Vue.js**](https://vuejs.org/) – Component-based UI development
+- 🌐 [**Node.js**](https://nodejs.org/es) – Backend services and APIs
+- ☁️ [**Vercel**](https://vercel.com/) – Deployment and hosting
+
+---
+
+## ✨ Features
+
+- Clean and modern UI design
+- Fully responsive layout
+- Optimized performance and SEO
+- Structured sections (About, Skills, Experience, Projects, Contact)
+- Production deployment with custom domain
+- Modular and scalable architecture
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+├── components/
+├── layouts/
+├── pages/
+├── data/
+├── styles/
+└── assets/
+
+public/
+docs/
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command               | Action                                           |
-| :-------------------- | :----------------------------------------------- |
-| `bun install`         | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
