@@ -114,13 +114,13 @@
       "image": "/img/projects/plani-app.webp"
     },
     {
-      "title": "Users REST API (Auth + Roles)",
+      "title": "MemberSpace",
       "description": "REST API with authentication (JWT), roles (admin/user), data validation and documentation with Swagger/OpenAPI. Deployed on Render/Railway.",
       "category": "backend",
-      "link": "https://tu-api-users.onrender.com/docs",
+      "link": "https://github.com/Ayoamaro/MemberSpace_API",
       "repo": "https://github.com/ayoamaro/api-users-jwt",
       "tags": ["Node.js", "Express", "PostgreSQL", "Swagger"],
-      "image": "/img/projects/api-users.webp"
+      "image": "/img/projects/member-space.webp"
     }
   ],
   "education": [
