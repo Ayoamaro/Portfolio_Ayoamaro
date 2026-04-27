@@ -99,7 +99,7 @@
       "title": "Quiz of The Simpsons",
       "description": "Interactive quiz of The Simpsons that analyzes the user's answers to determine which character best fits their personality. Deployed on Vercel for public access.",
       "category": "frontend",
-      "link": "https://simpsons-quiz-xi.vercel.app/",
+      "link": "https://the-simpsons-quiz.vercel.app/",
       "repo": "https://github.com/Ayoamaro/Simpsons-Quiz",
       "tags": ["Astro", "TypeScript", "Tailwind", "Vercel"],
       "image": "/img/projects/quiz-simpsons.webp"
@@ -108,17 +108,17 @@
       "title": "Plani",
       "description": "Web application for weekly planning that organizes tasks by columns and priorities to keep the workflow clear and focused. Deployed on Netlify for public access.",
       "category": "frontend",
-      "link": "https://tu-todo-vue.netlify.app",
+      "link": "https://plani-board.netlify.app/",
       "repo": "https://github.com/Ayoamaro/Plani",
       "tags": ["Vue", "TypeScript", "Vite", "Pinia", "Netlify"],
       "image": "/img/projects/plani-app.webp"
     },
     {
       "title": "MemberSpace",
-      "description": "REST API with authentication (JWT), roles (admin/user), data validation and documentation with Swagger/OpenAPI. Deployed on Render/Railway.",
+      "description": "REST API with authentication (JWT), roles (admin/user), data validation and documentation with Swagger. Deployed on Render.",
       "category": "backend",
-      "link": "https://github.com/Ayoamaro/MemberSpace_API",
-      "repo": "https://github.com/ayoamaro/api-users-jwt",
+      "link": "https://memberspace-api.onrender.com/docs/",
+      "repo": "https://github.com/Ayoamaro/MemberSpace_API",
       "tags": ["Node.js", "Express", "PostgreSQL", "Swagger"],
       "image": "/img/projects/member-space.webp"
     }
