@@ -129,6 +129,15 @@
       "description": "Mi formación académica relacionada con el desarrollo web y las tecnologías de la información."
     },
     {
+      "institution": "Federación de Áreas Urbanas de Canarias (FAUCA)",
+      "degree": "IFCT0109 - Seguridad Informática",
+      "startDate": "Febrero 2026",
+      "endDate": "Julio 2026",
+      "grade": "Horas: 540",
+      "summary": "Garantizar la seguridad de los accesos y usos de la información registrada en equipos informáticos, así como del propio sistema, protegiéndose de los posibles ataques, identificando vulnerabilidades y aplicando sistemas de cifrado a las comunicaciones que se realicen hacia el exterior y en el interior de la organización.",
+      "avatar": "/img/education/fauca-avatar.webp"
+    },
+    {
       "institution": "IES Domingo Pérez Minik",
       "degree": "CFGS Desarrollo de Aplicaciones Multiplataforma",
       "startDate": "Septiembre 2020",
