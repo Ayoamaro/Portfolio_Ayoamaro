@@ -1,7 +1,7 @@
 {
   "hero": {
     "greeting": "Hola, soy",
-    "name": "Ayoze Amaro Estévez",
+    "name": "Ayoze",
     "roleLines": ["Desarrollador", "Front-End"],
     "description": "Técnico superior en Desarrollo Web especializado en JavaScript, Vue y TypeScript. Me encanta crear interfaces claras, rápidas y bien cuidadas, adaptadas al mercado actual.",
     "cta": {
