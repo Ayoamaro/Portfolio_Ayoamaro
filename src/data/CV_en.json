@@ -1,7 +1,7 @@
 {
   "hero": {
     "greeting": "Hello, I'm",
-    "name": "Ayoze",
+    "name": "Ayoze Amaro",
     "roleLines": ["Front-End", "Developer"],
     "description": "Senior Web Developer specialized in JavaScript, Vue and TypeScript. I love creating clear, fast and well-crafted interfaces, adapted to the current market.",
     "cta": {
@@ -66,6 +66,14 @@
     {
       "title": "Experience",
       "description": "My professional experience in web development, highlighting my responsibilities and achievements in each position."
+    },
+    {
+      "company": "Ordenatech",
+      "position": "IT Technician",
+      "startDate": "August 2026",
+      "endDate": "Currently",
+      "avatar": "/img/experience/ordenatech-avatar.webp",
+      "summary": "Provided technical support and maintenance for hardware and software systems. Managed web and hosting-related issues using WHM and WP Toolkit, with hands-on experience in servers, data centres, and IT infrastructure maintenance."
     },
     {
       "company": "Codebay Innovation",
