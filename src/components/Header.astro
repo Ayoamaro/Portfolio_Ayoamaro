@@ -261,5 +261,37 @@ const i18n = I18N[lang];
     menu
       ?.querySelectorAll('a')
       .forEach((a) => a.addEventListener('click', closeMenu));
+
+    const navLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]')
+    );
+    const sections = navLinks
+      .map((link) => document.getElementById(link.dataset.section ?? ''))
+      .filter((section): section is HTMLElement => section !== null);
+    const SPY_OFFSET = 140;
+
+    const updateActiveLink = () => {
+      let current = '';
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= SPY_OFFSET)
+          current = section.id;
+      }
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom && sections.length)
+        current = sections[sections.length - 1].id;
+
+      navLinks.forEach((link) => {
+        const isActive = link.dataset.section === current;
+        link.classList.toggle('nav-link-active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    window.addEventListener('resize', updateActiveLink);
+    updateActiveLink();
   </script>
 </header>
