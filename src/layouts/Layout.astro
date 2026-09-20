@@ -41,8 +41,18 @@ const ogImageURL = new URL('/img/ayo-profile1.webp', Astro.site);
     />
     <link
       rel="icon"
+      href="/favicon.ico"
+      sizes="48x48"
+    />
+    <link
+      rel="icon"
       type="image/svg+xml"
       href="/favicon.svg"
+      sizes="any"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-icon.png"
     />
     <meta
       name="generator"
@@ -140,6 +150,22 @@ const ogImageURL = new URL('/img/ayo-profile1.webp', Astro.site);
         });
       })();
     </script>
+    <script is:inline>
+      window.va =
+        window.va ||
+        function (...params) {
+          (window.vaq = window.vaq || []).push(params);
+        };
+    </script>
+    {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          defer
+          src="/_vercel/insights/script.js"
+        />
+      )
+    }
   </head>
 
   <body class="bg-(--bg) text-(--text)">
