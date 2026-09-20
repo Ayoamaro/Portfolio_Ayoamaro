@@ -50,8 +50,10 @@ const dateLabel = `${item.startDate} - ${item.endDate}`;
         <img
           src={item.avatar}
           alt={`Avatar de ${item.company}`}
+          width="40"
+          height="40"
           loading="lazy"
-          class="h-10 w-10 rounded-md object-cover"
+          class="h-10 w-10 shrink-0 rounded-md object-cover"
           style="box-shadow: 0 0 0 1px var(--border);"
         />
 

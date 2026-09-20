@@ -54,6 +54,8 @@ const filterButtons: { key: string; label: string }[] = [
   })),
 ];
 
+const PROJECT_IMAGE = { width: 1144, height: 907 };
+
 const ACTION_CLASS =
   'bg-(--surface) border-(--border) text-(--text) hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]';
 
@@ -169,6 +171,8 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                 <img
                   src={p.image}
                   alt={p.title}
+                  width={PROJECT_IMAGE.width}
+                  height={PROJECT_IMAGE.height}
                   loading="lazy"
                   decoding="async"
                   class="block h-auto w-full"
