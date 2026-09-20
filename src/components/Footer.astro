@@ -1,15 +1,15 @@
 ---
-import CV from '../data/CV_es.json';
-
 import Gmail from './icons/Gmail.astro';
 import InfoJobs from './icons/InfoJobs.astro';
 import LinkedIn from './icons/LinkedIn.astro';
 import TecnoEmpleo from './icons/TecnoEmpleo.astro';
 
+const { cv } = Astro.props as { cv: any };
+
 const SOCIALS = {
   GMAIL: {
     tag: 'Gmail',
-    url: `mailto:${CV.contact.email}`,
+    url: `mailto:${cv.contact.email}`,
     class: 'bg-[var(--surface)] text-[var(--text)] hover:shadow-md',
     icon: Gmail,
   },
@@ -41,7 +41,6 @@ const socials = [
 ];
 
 const year = new Date().getFullYear();
-const { cv } = Astro.props as { cv: any };
 ---
 
 <footer
@@ -114,7 +113,7 @@ const { cv } = Astro.props as { cv: any };
   "
   >
     © {year}{' '}
-    <span class="font-medium text-(--accent)">{CV.hero.name}</span>.
-    {' '}All rights reserved.
+    <span class="font-medium text-(--accent)">{cv.hero.name}</span>.
+    {' '}{cv.ui.footer.rights}
   </div>
 </footer>
