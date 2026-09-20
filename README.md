@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="">
+  <a href="https://www.ayoamaro.dev/">
     <img
       src="./docs/images/astro1.png"
       alt="Portfolio Logo"
@@ -15,7 +15,7 @@
   </p>
 
   <p align="center">
-    <a href="">Live Demo</a>
+    <a href="https://www.ayoamaro.dev/">Live Demo</a>
     <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
     <a href="#-introduction">Introduction</a>
     <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
@@ -37,12 +37,14 @@ This is my personal developer portfolio, created to showcase my professional exp
 
 ## 🛠️ Stack
 
-- ⚡ [**Astro**](https://astro.build/) – Modern server-first framework
+- ⚡ [**Astro**](https://astro.build/) – Static site generation, zero client-side framework
 - 🟦 [**TypeScript**](https://www.typescriptlang.org/) – Strongly typed JavaScript
 - 🎨 [**Tailwind CSS**](https://tailwindcss.com/) – Utility-first styling
-- 🧩 [**Vue.js**](https://vuejs.org/) – Component-based UI development
-- 🌐 [**Node.js**](https://nodejs.org/es) – Backend services and APIs
+- 🖼️ [**astro-icon**](https://github.com/natemoo-re/astro-icon) – Icon components
+- 🗺️ [**@astrojs/sitemap**](https://docs.astro.build/en/guides/integrations-guide/sitemap/) – Automatic sitemap generation
 - ☁️ [**Vercel**](https://vercel.com/) – Deployment and hosting
+
+> Vue, Node.js and other technologies shown on the portfolio describe my professional experience, not this repository's dependencies.
 
 ---
 
@@ -50,7 +52,10 @@ This is my personal developer portfolio, created to showcase my professional exp
 
 - Clean and modern UI design
 - Fully responsive layout
-- Optimized performance and SEO
+- Bilingual (Spanish at `/`, English at `/en/`) with content driven by JSON files in `src/data/`
+- Light and dark theme
+- Optimized performance (WebP images) and SEO (meta tags, Open Graph, hreflang, sitemap, robots.txt)
+- Basic security headers configured in `vercel.json`
 - Structured sections (About, Skills, Experience, Projects, Contact)
 - Production deployment with custom domain
 - Modular and scalable architecture
@@ -70,4 +75,5 @@ src/
 
 public/
 docs/
+vercel.json
 ```

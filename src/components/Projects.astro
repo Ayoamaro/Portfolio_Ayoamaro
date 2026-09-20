@@ -54,18 +54,8 @@ const filterButtons: { key: string; label: string }[] = [
   })),
 ];
 
-const ACTIONS = {
-  preview: {
-    icon: LinkIcon,
-    class:
-      'bg-(--surface) border-(--border) text-(--text) hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
-  },
-  github: {
-    icon: GitHubIcon,
-    class:
-      'bg-(--surface) border-(--border) text-(--text) hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]',
-  },
-};
+const ACTION_CLASS =
+  'bg-(--surface) border-(--border) text-(--text) hover:border-[color-mix(in_srgb,var(--accent)_55%,var(--border))]';
 
 const TAGS: Record<string, { label: string; icon: any; class: string }> = {
   Astro: {
@@ -240,10 +230,10 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                     class:list={[
                       'inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300 ease-out',
                       'shadow-sm hover:-translate-y-0.5 focus-visible:outline-none',
-                      ACTIONS.preview.class,
+                      ACTION_CLASS,
                     ]}
                   >
-                    <ACTIONS.preview.icon class="size-5" />
+                    <LinkIcon class="size-5" />
                     {sectionHeader.labels.preview}
                   </a>
 
@@ -254,10 +244,10 @@ const TAGS: Record<string, { label: string; icon: any; class: string }> = {
                     class:list={[
                       'inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300 ease-out',
                       'shadow-sm hover:-translate-y-0.5 focus-visible:outline-none',
-                      ACTIONS.github.class,
+                      ACTION_CLASS,
                     ]}
                   >
-                    <ACTIONS.github.icon class="size-5" />
+                    <GitHubIcon class="size-5" />
                     {sectionHeader.labels.code}
                   </a>
                 </div>
