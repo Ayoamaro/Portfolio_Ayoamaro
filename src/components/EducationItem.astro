@@ -9,9 +9,8 @@ type Education = {
   avatar?: string;
 };
 
-const { item, index, isLast } = Astro.props as {
+const { item, isLast } = Astro.props as {
   item: Education;
-  index: number;
   isLast: boolean;
 };
 

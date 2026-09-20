@@ -42,7 +42,6 @@ const items = data.slice(1) as EducationItemType[];
         items.map((item, index) => (
           <EducationItem
             item={item}
-            index={index}
             isLast={index === items.length - 1}
           />
         ))
