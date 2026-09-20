@@ -1,3 +1,5 @@
 node_modules
 dist
 build
+# Prettier's Astro parser cannot handle the <script> nested in a JSX expression
+src/components/ExperienceItem.astro
