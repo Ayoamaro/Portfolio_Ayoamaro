@@ -22,6 +22,13 @@ interface LayoutProps {
 
 const { title } = Astro.props;
 const { lang, cv } = Astro.props as LayoutProps;
+
+const description: string = cv.seo.description;
+const otherLangPath = lang === 'es' ? '/en/' : '/';
+const canonicalPath = lang === 'es' ? '/' : '/en/';
+const canonicalURL = new URL(canonicalPath, Astro.site);
+const alternateURL = new URL(otherLangPath, Astro.site);
+const ogImageURL = new URL('/img/ayo-profile1.webp', Astro.site);
 ---
 
 <!doctype html>
@@ -42,6 +49,67 @@ const { lang, cv } = Astro.props as LayoutProps;
       content={Astro.generator}
     />
     <title>{title}</title>
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <link
+      rel="canonical"
+      href={canonicalURL}
+    />
+    <link
+      rel="alternate"
+      hreflang={lang === 'es' ? 'en' : 'es'}
+      href={alternateURL}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL('/', Astro.site)}
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:title"
+      content={title}
+    />
+    <meta
+      property="og:description"
+      content={description}
+    />
+    <meta
+      property="og:url"
+      content={canonicalURL}
+    />
+    <meta
+      property="og:image"
+      content={ogImageURL}
+    />
+    <meta
+      property="og:locale"
+      content={lang === 'es' ? 'es_ES' : 'en_US'}
+    />
+
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:title"
+      content={title}
+    />
+    <meta
+      name="twitter:description"
+      content={description}
+    />
+    <meta
+      name="twitter:image"
+      content={ogImageURL}
+    />
     <script is:inline>
       (() => {
         const getPreferredTheme = () => {

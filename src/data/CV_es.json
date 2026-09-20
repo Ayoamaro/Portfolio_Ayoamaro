@@ -1,4 +1,8 @@
 {
+  "seo": {
+    "title": "Ayoze Amaro - Desarrollador Front-End",
+    "description": "Portfolio de Ayoze Amaro, desarrollador Front-End especializado en JavaScript, Vue y TypeScript. Descubre mi experiencia, proyectos y certificaciones."
+  },
   "hero": {
     "greeting": "Hola, soy",
     "name": "Ayoze Amaro",
@@ -8,7 +12,7 @@
       "label": "¡Contáctame!",
       "href": "#contact"
     },
-    "image": "./img/ayo-profile1.png",
+    "image": "/img/ayo-profile1.webp",
     "socials": [
       {
         "tag": "LINKEDIN",
@@ -30,7 +34,7 @@
   "about": {
     "title": "Sobre mí",
     "description": "Soy una persona perseverante, comprometida y proactiva. Disfruto trabajar en equipo, aportar ideas y encontrar soluciones que realmente mejoren el producto y la experiencia del usuario.",
-    "image": "/img/ayo-profile2.png"
+    "image": "/img/ayo-profile2.webp"
   },
   "skills": [
     {
@@ -235,6 +239,9 @@
       "label": "Idioma",
       "es": "ES",
       "en": "EN"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados."
     }
   }
 }
